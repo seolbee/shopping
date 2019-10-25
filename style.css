@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline:none;
+}
+
+li, ul{
+    list-style : none;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+body{
+    background-color: rgba(245,245,245,.5);
+}
+
+#nav{
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    padding: 0 15px;
+}
+
+#nav > .logo{
+    margin: auto;
+    padding: 20px 30px;
+}
+
+#nav > .logo > a{
+    font-family: 'Audiowide', cursive;
+    font-size: 30px;
+}
+
+/* #nav > .logo > a > img{
+    width: 100%;
+} */
+
+#nav > .menu > p{
+    color: #aaa;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#nav > .menu > #store > li > a > i{
+    margin-right: 15px;
+}
+
+#nav > .menu > ul > li{
+    height: 50px;
+    line-height: 50px;
+}
+
+#nav > .menu > ul > li > a{
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+}
+
+#body{
+    display: inline-block;
+    margin-left: 15%;
+    width: 85%;
+}
+
+header{
+    display: flex;
+    padding: 10px;
+    line-height: 40px;
+}
+
+.search{
+    display:flex;
+    flex: 2;
+}
+
+.search > form{
+    padding: 0 30px;
+    line-height: 50px;
+}
+
+.search > form > i{
+    margin-right: 10px;
+}
+
+.search > form > input{
+    border: none;
+    background: none;
+    color: #555;
+    font-size: 15px;
+}
+
+.search > form > input::placeholder{
+    color: #555;
+}
+
+.search > form > button{
+    border: none;
+    background:none;
+    display: none;
+}
+
+.search > form > button > i{
+    color:#333;
+    font-size: 20px;
+}
+
+.search:hover > form > button{
+    display: inline-block;
+}
+
+.proflie{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.proflie > a{
+    margin: 0 20px;
+    padding: 0 15px;
+    color: #000;
+    line-height: 55px;
+    font-family: "Istok Web", sans-serif;
+    font-size: 15px;
+}
+
+.proflie > a > i{
+    margin-right: 10px;
+    color: #000;
+}
+
+#btn:hover, .search > form:hover{
+    border-radius: 45px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
+    color: #000;
+}
+
+.active{
+    border-radius: 45px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
+    color: #000;
+}
+
+.active > button{
+    display: inline-block;
+}

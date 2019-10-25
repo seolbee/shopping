@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+button{
+    background : none;
+    border: none;
+    cursor: pointer;
+}
+
+header{
+    text-align: right;
+    padding: 0 20px;
+    line-height: 80px;
+}
+
+.btn{
+    background-color: #236cfc;
+    padding: 8px 11px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.btn:hover{
+    background-color:#1057e3;    
+}
+
+#visual{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+}
+
+#main{
+    width: 28%;
+    margin: auto;
+    text-align: center;
+}
+
+.logo{
+    margin-bottom: 20px;
+}
+
+.search{
+    width: 100%;
+    border: 2px solid #236cfc;
+    border-radius: 30px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.search > form > input{
+    display: inline-block;
+    border: none;
+    background: none;
+    width: 80%;
+    font-size: 15px;
+}
+/* 
+.search > form > input::placeholder{
+    font-size: 13px;
+} */
+
+.search > form > i{
+    position: relative;
+    right: 10px;
+    color: #236cfc;
+    font-size: 20px;
+}
+
+.search > form > button{
+    display: inline-block;
+}
+
+.search > form > button > i{
+    font-size: 25px;
+    color: #236cfc;
+}
+
+.best{
+    width: 20000px;
+    height: 400px;
+    margin: 80px 50px;
+    position: relative;
+}
+
+.box{
+    height: 400px;
+}
+
+/* .arrow_btn{
+    border-radius: 50%;
+    background-color: #236cfc;
+    padding: 11px 14px;
+    position: relative;
+    top: 150px;
+}
+
+.left_btn > button{
+    left: 10px;
+}
+
+.right_btn > button{
+    left: 1800px;
+}
+
+.arrow_btn > i{
+    color: #fff;
+    font-size: 20px;
+}
+
+.title{
+    font-family: 'Prompt', sans-serif;
+    font-size: 30px;
+} */
+
+.card{
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,.5);
+    margin: 10px;
+    position: relative;
+}
+
+.card > img{
+    width: 200px;
+}
+
+.card > .p_box{
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.card > .button_box{
+    margin: 5px 0;
+}
+
+.animation{
+    animation-name: slider;
+    animation-duration: 5s;
+}
+
+@keyframes slider{
+    0%{
+        left: 0%;
+    }
+
+    100%{
+        left: -100%;
+    }
+}

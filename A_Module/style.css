@@ -1,0 +1,291 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline:none;
+}
+
+li, ul{
+    list-style : none;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+body{
+    background-color: rgba(240,240,240,.5);
+}
+
+#nav{
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    position: fixed;
+}
+
+#nav > .logo{
+    margin: auto;
+    padding: 20px 30px;
+}
+
+#nav > .logo > a{
+    font-family: 'Audiowide', cursive;
+    font-size: 35px;
+}
+
+/* #nav > .logo > a > img{
+    width: 100%;
+} */
+
+#nav > .menu > p{
+    color: #aaa;
+    padding: 15px 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#nav > .menu > #store > li > a > i{
+    margin-right: 15px;
+}
+
+#nav > .menu > ul > li{
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+}
+
+#nav > .menu > ul > li > a{
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+}
+
+#body{
+    display: inline-block;
+    margin-left: 15%;
+    width: 85%;
+    padding: 20px 10px;
+}
+
+header{
+    display: flex;
+    padding: 10px;
+    line-height: 45px;
+}
+
+.search{
+    display:flex;
+    flex: 1;
+}
+
+.search > form{
+    padding: 0 30px;
+    /* line-height: 50px; */
+}
+
+.search > form > i{
+    margin-right: 10px;
+}
+
+.search > form > input{
+    border: none;
+    background: none;
+    color: #555;
+    font-size: 15px;
+}
+
+.search > form > input::placeholder{
+    color: #555;
+}
+
+.search > form > button{
+    border: none;
+    background:none;
+    display: none;
+}
+
+.search > form > button > i{
+    color:#333;
+    font-size: 20px;
+}
+
+.search> form:hover  > button{
+    display: inline-block;
+}
+
+.proflie{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.proflie > a{
+    margin: 0 15px;
+    padding: 0 15px;
+    color: #000;
+    font-family: "Istok Web", sans-serif;
+    font-size: 15px;
+}
+
+.proflie > a > i{
+    margin-right: 10px;
+    color: #000;
+}
+
+#btn:hover, .search > form:hover{
+    border-radius: 45px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
+    color: #000;
+}
+
+#btn.active, .search > form.active{
+    border-radius: 45px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
+    color: #000;
+}
+
+.search > form.active > button{
+    display: inline-block;
+}
+
+#store > li:hover{
+    background-color: #333;
+}
+
+ul > li:hover > a{
+    color: #fff;
+}
+
+#store > li.active{
+    background-color: #333;
+}
+
+#store > li.active > a{
+    color: #fff;
+}
+
+#main{
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.section{
+    padding: 0 10px;
+}
+
+.section > .title_box{
+    display: flex;
+    line-height: 25px;
+}
+
+.title{
+    font-family : 'Gothic A1', sans-serif;
+    font-size: 25px;
+    margin: 15px 0;
+    display: flex;
+    flex: 3;
+}
+
+.section >.title_box > .a{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.section > .title_box > .a > a{
+    /* line-height: 25px; */
+    margin: auto;
+}
+
+.best{
+    padding-bottom: 100px;
+}
+
+.card{
+    display: inline-block;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,.1);
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.card > img{
+    width: 200px;
+    height: 200px;
+}
+
+.card > .p_box > .sub_p_box{
+    padding: 10px 0;
+}
+
+.card > .p_box > .sub_p_box:nth-child(1){
+    line-height: 1.6;
+}
+
+.card > .p_box > .sub_p_box:nth-child(2){
+    text-align: center;
+}
+
+.btn2-outLine{
+    padding: 5px 8px;
+    border: 1px solid #333;
+    border-radius: 3px;
+}
+
+.btn2-outLine:hover{
+    background-color: #333;
+    color: #fff;
+}
+
+.btn2{
+    padding: 5px 8px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.btn2:hover{
+    background-color: #222;
+} 
+
+/* .arrow{
+    width: 1%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,.8);
+}
+
+.arrow > i{
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.left_btn{
+    left: 5px;
+}
+
+.right_btn{
+    right: 390px;
+} */
+
+.catalog > p{
+    display: inline-block;
+}
+
+.catalog > #catalog{
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px 8px;
+    font-size: 13px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    width: 5%;
+}
