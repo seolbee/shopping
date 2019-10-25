@@ -154,6 +154,11 @@ header{
     animation-duration: 5s;
 }
 
+.animation2{
+    animation-name:slider2;
+    animation-duration: 5s;
+}
+
 @keyframes slider{
     0%{
         left: 0%;
@@ -161,5 +166,15 @@ header{
 
     100%{
         left: -100%;
+    }
+}
+
+@keyframes slider2{
+    0%{
+        left: 100%;
+    }
+
+    100%{
+        left: 0%;
     }
 }

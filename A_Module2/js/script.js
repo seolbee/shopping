@@ -23,11 +23,13 @@ class App{
         let arr = document.querySelectorAll(".card");
         let idx = 0;
         this.t = setInterval((e)=>{
-            arr[idx].classList.remove("animation");
-            let next = idx < 15 ? idx + 1 : 0;
-            arr[next].classList.add("animation");
+            let next = idx < 14 ? idx + 1 : 0;
+            // arr[idx].classList.remove("animation");
+            // arr[idx].classList.add("animation2");
+            // arr[next].classList.remove("animation2");
+            // arr[next].classList.add("animation");
             idx = next;
-        }, 5000);
+        }, 1000);
     }
 
     cardTemplate(won, count, owner){
