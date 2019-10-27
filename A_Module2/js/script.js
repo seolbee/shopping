@@ -6,10 +6,10 @@ class App{
 
     init(){
         this.box = document.querySelector(".box");
+        this.box.innerHTML = "";
     }
 
     async main(){
-        this.box.innerHTML = "";
         for(let i = 0; i<15; i++){
             let div = document.createElement("div");
             div.classList.add("card");
@@ -22,14 +22,11 @@ class App{
     sliding(){
         let arr = document.querySelectorAll(".card");
         let idx = 0;
+        let left = 0;
         this.t = setInterval((e)=>{
-            let next = idx < 14 ? idx + 1 : 0;
-            // arr[idx].classList.remove("animation");
-            // arr[idx].classList.add("animation2");
-            // arr[next].classList.remove("animation2");
-            // arr[next].classList.add("animation");
-            idx = next;
-        }, 1000);
+            arr[0].style.marginLeft = 
+            this.box.appendChild(arr[0]);
+        }, 2000);
     }
 
     cardTemplate(won, count, owner){
