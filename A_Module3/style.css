@@ -20,7 +20,9 @@ button{
 }
 
 body{
-    background-color: rgba(240,240,240,.35);
+    background-color: rgba(245,245,245,.25);
+    overflow-x : hidden;
+    /* background-color: #fff; */
 }
 
 header{
@@ -29,19 +31,19 @@ header{
     height: 60px;
     padding: 0 50px;
     line-height: 60px;
-    position: fixed;
 }
+
+/* header:hover{
+    background-color: #fff;
+} */
 
 header > div, ul{
     display: flex;
 }
 
-header:hover{
-    background-color: #fff;
-}
-
 .left {
     flex: 1;
+    justify-content: flex-start;
 }
 
 .left > .logo{
@@ -58,8 +60,16 @@ header:hover{
     border-radius: 20px;
     margin: 10px 0;
     display: flex;
-    flex: 2;
+    flex: 1;
     padding: 5px 10px;
+    margin-left: 30px;
+}
+
+.search > i{
+    display: flex;
+    margin-top: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .search:hover{
@@ -72,7 +82,7 @@ header:hover{
     display: flex;
     flex:1;
     color: #333;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .left > .search > input{
@@ -89,9 +99,9 @@ header:hover{
 }
 
 .center{
-    flex: 1;
+    flex: 2;
     justify-content: center;
-    padding: 0 50px;
+    padding: 0 60px;
 }
 
 .center > li{
@@ -100,12 +110,17 @@ header:hover{
     justify-content: center;
 }
 
+.center > li > a{
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 18px;
+}
+
 .center > li:hover{
     border-bottom: 2px solid #333;
 }
 
 .right{
-    flex: 0.5;
+    flex: 1;
     justify-content: flex-end;
 }
 
@@ -114,10 +129,173 @@ header:hover{
     color: #333;
     font-size: 15px;
     padding: 10px 20px;
+    font-family: "Istok Web", sans-serif;
 }
 
 .btn:hover{
     background-color: #fff; 
     border-radius: 20px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
+}
+
+.btn > i{
+    margin-right: 8px;
+}
+.visual{
+    display: flex;
+    width: 100%;
+    height: 900px;
+    padding: 0 50px;
+}
+
+.img_box{
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+.img{
+    /* top: 50%;
+    transform: translateY(-50%); */
+    display: flex;
+    flex: 1;
+    height: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.img:nth-child(1){
+    top: 150px;
+    width: 150%;
+    background-color: rgb(210,210,210);
+}
+
+.img:nth-child(2){
+    top: 350px;
+    right: 50px;
+    background-color: rgb(100,100,100);
+}
+
+.img > img{
+    width: 100%;
+    position: absolute;
+    animation: slider 2s;
+}
+
+.title_box{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.visual > .title_box{
+    margin: auto;
+}
+
+.title{
+    font-size: 40px;
+    font-family: 'PT Sans', sans-serif; 
+}
+
+.title > span{
+    font-family: 'Audiowide', cursive;
+}
+
+.content{
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.btn2{
+    background-color: #222;
+    color: #fff;
+    border-radius: 3px;
+    padding: 5px 8px;
+}
+
+.title_box > .btn2{
+    padding: 8px 20px;
+    text-align: center;
+    margin-right: 700px;
+    margin-top: 20px;
+    /* border-radius: 30px; */
+    border-radius: 5;
+    font-size: 20px;
+}
+
+.title_box > .btn2:hover{
+    background-color: #111;
+}
+
+@keyframes slider{
+    0%{
+        top: -100%;
+    }
+
+    100%{
+        top: 0%;
+    }
+}
+
+@keyframes slider2{
+    0%{
+        right: -100%;
+    }
+
+    100%{
+        right : 0%;
+    }
+}
+
+@keyframes slider3{
+    0%{
+        left: -100%;
+    }
+
+    100%{
+        left: 0%;
+    }
+}
+
+.best{
+    height: 1000px;
+    padding: 0 50px;
+}
+
+.best > .title{
+    padding-bottom: 50px;
+}
+
+.best_box{
+    display: flex;
+}
+
+.best_box > .title_box{
+    /* background-color: rgba(0,0,0,.5); */
+    overflow: hidden;
+}
+
+.best_box:nth-child(2) > .title_box > .btn2{
+    margin-left: 700px;
+    margin-right: 0;
+}
+
+.best_box > .title_box{
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 40px;
+    position: relative;
+    animation: slider2 2s;
+    text-align: right;
+}
+
+.best_box:nth-child(3) > .title_box{
+    animation : slider3 2s;
+    text-align: left;
+}
+
+.best_box:nth-child(3) > .img_box{
+    display: flex;
+    justify-content: flex-end;
 }
