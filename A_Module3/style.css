@@ -263,8 +263,11 @@ header > div, ul{
 }
 
 .best{
-    height: 900px;
     padding: 0 50px;
+}
+
+.best > .sub_title{
+    text-align: center;
 }
 
 .best > .title{
@@ -272,7 +275,7 @@ header > div, ul{
     text-align :center;
 }
 
-/* .best_box > .img_box{
+.best_box > .img_box{
     display: flex;
     flex: 0.5;
 }
@@ -286,13 +289,13 @@ header > div, ul{
 }
 
 .best_box > .title_box{
-    background-color: rgba(0,0,0,.5);
+    /* background-color: rgba(0,0,0,.5); */
     overflow: hidden;
 }
 
 .best_box_1 > .title_box > .btn2{
     margin-left: 0;
-    margin-right: 900px;
+    /* margin-right: 900px; */
 }
 
 .best_box > .title_box{
@@ -300,11 +303,11 @@ header > div, ul{
     padding-left: 50px;
     padding-right: 40px;
     position: relative;
-    animation: slider2 2s;
 }
 
 .best_box_1 > .title_box{
     text-align: left;
+    animation: slider2 2s;
 }
 
 .best_box_2 > .title_box{
@@ -318,11 +321,11 @@ header > div, ul{
 }
 
 .best_box_2 > .title_box > .btn2{
-    margin-left: 900px;
+    /* margin-left: 900px; */
     margin-right: 0;
-} */
+}
 
-.best_box_card{
+/* .best_box_card{
     padding: 50px;
     margin: auto;
 }
@@ -333,31 +336,35 @@ header > div, ul{
 }
 
 .best_card > .img{
-    width: 60%;
     position: relative;
 }
 
 .best_card > .img > img{
-    width: 100%;
+    width: 300px;
 }
 
-.best_card > .p_box{
+.best_card > .img > .box > .p_box{
     line-height: 1.7;
     text-align: left;
+    padding-left: 50px;
 }
 
-.best_card > .p_box > p{
+.best_card > .img > .box > .p_box > p{
     font-size: 20px;
     width: 100%;
+    color: #fff;
 }
 
-.best_card > .p_box > button{
+.best_card > .img > .box >  .button_group > button{
     text-align: center;
     font-size: 15px;
-    margin-top: 10px;
 }
 
-.button_group{
+.button_group {
+    margin-top: 20px;
+}
+
+.box {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -366,14 +373,14 @@ header > div, ul{
     display: none;
     font-size: 15px;
     margin-top: 10px;
-}
+} */
 
-.best_card:hover{
+/* .best_card:hover{
     transition: all 0.8s;
     transform: scale(1.1);
-}
+} */
 
-.best_card:hover > .img::after{
+/* .best_card:hover > .img::after{
     content: "";
     background-color: rgba(0,0,0,.5);
     position: absolute;
@@ -383,7 +390,7 @@ header > div, ul{
     left: 0;
 }
 
-.best_card:hover > .img > .button_group{
+.best_card:hover > .img > .box{
     display: block;
     z-index: 5;
-}
+} */
