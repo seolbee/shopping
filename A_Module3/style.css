@@ -119,7 +119,7 @@ header > div, ul{
 
 .center > li > a{
     font-family: 'Ropa Sans', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .center > li:hover{
@@ -279,11 +279,12 @@ header > div, ul{
     }
 }
 
-.best{
+.div{
     text-align: center;
+    padding: 50px 0;
 }
 
-.best > .title{
+.div> .title{
     margin-bottom: 50px;
 }
 
@@ -300,6 +301,9 @@ header > div, ul{
     color: #999;
     padding: 10px;
     cursor: pointer;
+    margin: 0 10px;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
 }
 
 .category > li.active, .category > li:hover{
@@ -307,5 +311,103 @@ header > div, ul{
     color: #000;
 }
 
-.card_img{
+.best_box{
+    padding: 50px 0;
 }
+
+.card_img{
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.card_img > .img_box {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card_img > .img_box > img{
+    width: 100%;
+    height: 100%;
+}
+
+.card_img > .p_box{
+    display: flex;
+    padding-top: 10px;
+}
+
+.card_img > .p_box > .sub_p_box{
+    text-align: left;
+    padding-left: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+/* 
+.card_img > .p_box > .sub_p_box > p{
+    display: flex;
+    
+} */
+
+.card_img > .p_box > .button{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding-right: 10px;
+}
+
+.strong{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* .card_img > .img_box:hover::after{
+    content: "";
+    background-color: rgba(0,0,0,.5);
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+.card_img > .img_box:hover > img{
+    transform: scale(1.1);
+    transition: all 0.6s;
+}
+
+.card_img > .img_box > .button_group{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+/* .card_img > .img_box > .button_group > i{
+    font-size: 60px;
+    color: #fff;
+}
+
+.card_img > .img_box:hover > .button_group > i{
+    transform: scale(1.2);
+    transition: all 0.6s;
+}
+
+.card_img > .img_box:hover > .button_group{
+    display: block;
+} */
+
+/* .sub_title{
+    font-size: 25px;
+    font-family: 'PT Sans', sans-serif; 
+} */
