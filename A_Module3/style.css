@@ -265,17 +265,20 @@ header > div, ul{
 
 .div{
     text-align: center;
-    padding: 50px 0;
+    padding: 50px;
 }
 
 .div> .title{
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .category{
     display: flex;
+}
+
+.div > .category{
+    width: 60%;
     margin: 0 auto;
-    width: 50%;
 }
 
 .category > li{
@@ -443,28 +446,30 @@ footer{
     border-radius: 3px;
     background: none;
     border: none;
-    width: 30%;
     background: -webkit-linear-gradient(transparent, transparent);
     -webkit-appearance: none;
     font-size: 15px;
     font-family: 'Work Sans', sans-serif;
+    width: 200px;
 }
 
 #order:hover{
     background-color: #fff;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
-    -webkit-appearance: initial;
 }
 
 .sub_box{
     padding: 20px 0;
     display: grid;
-    grid-template-columns: repeat(5, 260px);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 60px;
 }
 
-.card{
+.sub_box > .card{
     display: grid;
+}
+
+.card{
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -477,36 +482,44 @@ footer{
 }
 
 .card > .img > img{
-    width: 260px;
+    width: 100%;
 }
 
 .card > .p_box{
     padding: 10px;
     line-height: 1.6;
+    text-align: left;
 }
 
 .card > .p_box > .button_group{
     margin-top: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+    display: flex;
 }
 
-.card > .p_box > .button_group > i{
+.card > .p_box > .button_group > .i_group{
+    display: flex;
+    flex: 1;
+}
+
+.card > .p_box > .button_group > .i_group > i{
     font-size: 20px;
     margin: 0 5px;
 }
 
-.card > .p_box > .button_group > .far{
+.card > .p_box > .button_group > .i_group >  .far{
     color: #f54242;
 }
 
-.card > .p_box > .button_group > i:hover{
+.i_group > i:hover{
     transform: scale(1.05);
     transition: all 0.5s;
 }
 
 .button_group > .btn2{
-    margin-left: 70px;
+    display: flex;
+    justify-content: center;
 }
 
 /* input[type="radio"]{
@@ -516,4 +529,38 @@ footer{
 .brand{
     width: 80%;
     margin: 0 auto;
+    padding-top: 50px;
+}
+
+.brand > .top > .category{
+    display:flex;
+    flex: 1;
+}
+
+.middle{
+    margin: 10px 0;
+}
+
+.brand_box{
+    padding: 50px 0;
+}
+
+.comment{
+    text-align: left;
+    background-color: #eee;
+    padding: 10px;
+    line-height: 1.7;
+}
+
+.comment > p{
+    font-size: 13px;
+}
+
+.more_small{
+    font-size: 12px;
+    color: #999;
+}
+
+.text{
+    font-size: 14px;
 }

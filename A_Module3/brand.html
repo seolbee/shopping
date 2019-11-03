@@ -28,9 +28,8 @@
             </form>
         </div>
         <ul class="center">
-            <li><a href="all.html">all</a></li>
+            <li><a href="all.html">category</a></li>
             <li><a href="brand.html">brand</a></li>
-            <li><a href="new.html">new</a></li>
             <li><a href="sale.html">sale</a></li>
             <li><a href="review.html">review</a></li>
         </ul>
@@ -45,17 +44,6 @@
         <div class="brand">
             <div class="top">
                 <p class="sub_title">Brand</p>
-                <ul class="category">
-                    <li>nike</li>
-                    <li>adidas</li>
-                    <li>FILA</li>
-                    <li>puma</li>
-                    <li>Reebok</li>
-                    <li>newbalance</li>
-                    <li>descente</li>
-                    <li>jako</li>
-                    <li>other</li>
-                </ul>
                 <div class="select">
                     <select name="order" id="order">
                         <option value="popluar">popluar</option>
@@ -64,6 +52,19 @@
                         <option value="High price">High price</option>
                     </select>
                 </div>
+            </div>
+            <div class="middle">
+                    <ul class="category">
+                            <li class="active">nike</li>
+                            <li>adidas</li>
+                            <li>FILA</li>
+                            <li>puma</li>
+                            <li>Reebok</li>
+                            <li>newbalance</li>
+                            <li>descente</li>
+                            <li>jako</li>
+                            <li>other</li>
+                        </ul>
             </div>
             <div class="sub_box">
                 <div class="card">
@@ -76,8 +77,10 @@
                         <p><span class="small">\99,000</span> <span class="strong">\50,000</span></p>
                         <p class="small">Sales : 2000 / Like : 1000</p>
                         <div class="button_group">
-                                <i class="far fa-heart"></i>
-                                <i class="fas fa-cart-plus"></i>
+                                <div class="i_group">
+                                        <i class="far fa-heart"></i>
+                                        <i class="fas fa-cart-plus"></i>
+                                </div>
                                 <a href="" class="btn2">Read more</a>
                         </div>
                     </div>
