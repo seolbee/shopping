@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css">
-    <script src="js/script.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="js/register.js"></script>
     <title>Document</title>
 </head>
 
@@ -28,7 +29,7 @@
             </form>
         </div>
         <ul class="center">
-                <li><a href="index.html">home</a></li>
+            <li><a href="index.html">home</a></li>
             <li><a href="all.html">category</a></li>
             <li><a href="brand.html">brand</a></li>
             <li><a href="sale.html">sale</a></li>
@@ -37,14 +38,31 @@
         <div class="right">
             <div class="proflie">
                 <a href="login.html" class="btn"><i class="fas fa-sign-in-alt"></i>sign in</a>
-                <a href="register.html" class="btn"><i class="fas fa-user-plus"></i>sign up</a>
+                <a href="register.html" class="btn active"><i class="fas fa-user-plus"></i>sign up</a>
             </div>
         </div>
     </header>
-    <footer>
-        email : yy_1910204@y-y.hs.kr<br>
-        call : 010-8801-3216
-    </footer>
+    <section id="main">
+        <div class="login">
+            <div class="login_box">
+                    <p class="sub_title">Sign up</p>
+                <form action="" method="post">
+                    <div class="input">
+                        <input type="text" name="id" id="id" placeholder="enter id">
+                    </div>
+                    <div class="input">
+                        <input type="password" name="pw" id="pw" placeholder="enter pw">
+                    </div>
+                    <div class="input address">
+                        <input type="text" name="address" id="address" placeholder="find Address" readonly>
+                    </div>
+
+                    <button class="btn2">Sign up</button>
+                </form>
+                <p class="small">If you haven't registered yet, go to <a href="register.html" class="a">Sign in</a></p>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

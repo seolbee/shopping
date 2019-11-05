@@ -17,6 +17,7 @@ a{
 button{
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 body{
@@ -35,7 +36,7 @@ header{
 
 .header{
     position : fixed;
-    top : 0px;
+    top: 0;
     z-index : 10;
     background-color : rgb(240,240,240);
 }
@@ -79,7 +80,7 @@ header > div, ul{
     margin-right: 10px;
 }
 
-.search:hover, form.active{
+a.active, .search:hover, form.active{
     background-color: #fff;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
 }
@@ -131,7 +132,7 @@ header > div, ul{
 }
 
 .btn{
-    border-radius: 3px;
+    border-radius: 20px;
     color: #333;
     font-size: 15px;
     padding: 10px 20px;
@@ -140,7 +141,6 @@ header > div, ul{
 
 .btn:hover{
     background-color: #fff; 
-    border-radius: 20px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
 }
 
@@ -591,12 +591,79 @@ footer{
 
 .login{
     width: 100%;
-    height: 900px;
+    height: 909px;
+    margin: auto;
 }
 
 .login_box{
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    height: 100%;
     margin: auto;
-    padding: 50px 0; 
+    padding: 50px 0;
+    padding-top: 150px;
+    text-align: center;
+}
+
+.login_box > .sub_title{
+    text-align: center;
+}
+
+.input{
+    width: 100%;
+    margin: 50px 0;
+}
+
+.input > input{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 2px solid #333;
+    background: none;
+    font-size: 18px;
+}
+
+
+.login_box > form> button{
+    font-size: 18px;
+    padding: 8px 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+.login_box > form > a{
+    padding: 8px 18px;
+}
+
+.input > input::placeholder{
+    font-size: 18px;
+    color: #000;
+}
+
+.login_box > .small{
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.a{
+    text-decoration-line: underline;
+    color: #aaa;
+}
+
+/* .address{
+    display: flex;
+}
+
+.address > input{
+    display: flex;
+    flex: 1;
+}
+
+.address > button{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+} */
+
+.btn_box{
+    text-align: left;
 }
