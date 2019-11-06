@@ -14,10 +14,11 @@ class register{
     
     openPopup(){
         new daum.Postcode({
-            onComplete:function(data){
-
+            oncomplete : function(data){
+                let address = data.address;
+                document.querySelector("#address").value = address;
             }
-        })
+        }).open();
     }
 }
 
