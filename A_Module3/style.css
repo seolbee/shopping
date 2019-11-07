@@ -21,7 +21,7 @@ button{
 }
 
 body{
-    background-color: rgba(240,240,240,.85);
+    background-color: rgba(245,245,245,.85);
     overflow-x : hidden;
     /* background-color: #fff; */
 }
@@ -38,7 +38,7 @@ header{
     position : fixed;
     top: 0;
     z-index : 10;
-    background-color : rgb(240,240,240);
+    background-color : rgb(245,245,245);
 }
 
 /* header:hover{
@@ -440,7 +440,7 @@ footer{
     justify-content: flex-end;
 }
 
-#order{
+select{
     text-align: right;
     padding: 5px 8px;
     border-radius: 3px;
@@ -453,7 +453,7 @@ footer{
     width: 200px;
 }
 
-#order:hover{
+select:hover{
     background-color: #fff;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
 }
@@ -489,7 +489,7 @@ footer{
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
 }
 
-.card:hover{
+.card:hover > .img{
     transform: scale(1.05);
     transition: all 0.6s;
 }
@@ -514,12 +514,15 @@ footer{
 .i_group{
     display: flex;
     flex: 1;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .i_group > i{
     font-size: 20px;
-    margin: 0 10px;
+}
+
+.i_group > i:nth-child(2){
+    margin-left: 20px;
 }
 
 .i_group >  .far{
@@ -649,21 +652,110 @@ footer{
     color: #aaa;
 }
 
-/* .address{
+.address{
     display: flex;
 }
 
 .address > input{
     display: flex;
-    flex: 1;
 }
 
-.address > button{
-    display: flex;
+.address > #address{
+    flex: 2;
+}
+
+.address > #Detailed_address{
     flex: 1;
-    justify-content: center;
-} */
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.address > #Detailed_address::placeholder{
+    font-size: 14px;
+    font-weight: bold;
+}
 
 .btn_box{
     text-align: left;
+}
+
+.view{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding: 100px 50px;
+    height: 80%;
+}
+
+.view > .text_box > .sub_title{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.text_box > .sub_title{
+    font-size: 35px;
+}
+
+.text_box > p > span{
+    font-size: 25px;
+}
+
+.page{
+    width: 100%;
+}
+
+.img_box > img{
+    width: 70%;
+    margin: auto;
+}
+
+.text_box{
+    margin: auto;
+    line-height: 2.0;
+}
+
+.fa-heart{
+    color: #f54242;
+}
+
+.text_box > p > i{
+    font-size: 18px;
+}
+
+.text_box > p > i:nth-child(2){
+    margin-left: 15px;
+}
+
+.text_box > form{
+    width: 100%;
+}
+
+.text_box > form > select{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.text_box > form > .btn_group{
+    text-align : center;
+    margin: 20px 0;
+}
+
+.text_box > form > .btn_group > button{
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 2px solid #222;
+    width: 43%;
+}
+
+.btn2-outline{
+    border: 2px solid #222;
+    border-radius: 3px;
+}
+
+.btn2-outline:hover{
+    background-color: #222;
+    color: #fff;
 }
