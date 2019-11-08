@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>장바구니</title>
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Gothic+A1|Istok+Web|Ropa+Sans&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css">
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="js/cart.js"></script>
 </head>
 
 <body>
@@ -39,13 +41,81 @@
             <div class="proflie">
                 <!-- <a href="login.html" class="btn"><i class="fas fa-sign-in-alt"></i>sign in</a>
                 <a href="register.html" class="btn"><i class="fas fa-user-plus"></i>sign up</a> -->
-                <a href="cart.html" class="btn active"><i class="fas fa-shopping-cart"></i>My cart</a>
+                <a href="cart.html" class="btn active"><i class="fas fa-shopping-cart"></i>My Cart</a>
             </div>
         </div>
     </header>
     <section id="main">
         <div class="cart">
-            <p class="sub_title">My Cart</p>
+            <div class="cart_box">
+                <p class="sub_title">My Cart</p>
+                <div class="check_box">
+                    <label for=""></label>
+                </div>
+                <div class="cart_list">
+                    <!-- <div class="cart_card">
+                        <div class="check">
+                            <label for="check"></label>
+                            <input type="checkbox" name="check" id="check">
+                        </div>
+                        <img src="img/shoose15.JPG" alt="img">
+                        <div class="info">
+                            <p>신발</p>
+                            <p class="small">size : 250mm / color : white</p>
+                            <p class="strong">\50,000</p>
+                        </div>
+                        <div class="count_box">
+                            <div class="count">
+                                <div class="minus">-</div>
+                                <div class="input_count">
+                                    <input type="number" name="count" id="count" min="1" value="1">
+                                </div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                        <div class="current">
+                            <p class="strong">\50,000</p>
+                        </div>
+                    </div>
+                    <div class="cart_card">
+                        <div class="check">
+                            <label for="check"></label>
+                            <input type="checkbox" name="check" id="check">
+                        </div>
+                        <img src="img/shoose15.JPG" alt="img">
+                        <div class="info">
+                            <p>신발</p>
+                            <p class="small">size : 250mm / color : white</p>
+                            <p class="strong">\50,000</p>
+                        </div>
+                        <div class="count_box">
+                            <div class="count">
+                                <div class="minus">-</div>
+                                <div class="input_count">
+                                    <input type="number" name="count" id="count" min="1" value="1">
+                                </div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                        <div class="current">
+                            <p class="strong">\50,000</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="receipt">
+                <p class="sub_title">Summary</p>
+                <div class="sum">
+                    <p>Value of Products : 50,000</p>
+                    <p>Delivery Cost : 10,000</p>
+                </div>
+                <div class="cost">
+                    <p>Total : <span class="strong">\60,000</span></p>
+                </div>
+                <div class="btn_group">
+                    <a href="" class="btn2">Purchase</a>
+                </div>
+            </div>
         </div>
     </section>
     <footer>
