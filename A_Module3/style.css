@@ -762,7 +762,7 @@ select:hover{
 
 .cart{
     width: 70%;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 .cart > .sub_title{
@@ -770,9 +770,9 @@ select:hover{
 }
 
 .cart > .cart_box{
-    margin-top: 20px;
     display: inline-block;
     width: 70%;
+    margin-bottom: 100px;
 }
 
 .cart_list{
@@ -874,11 +874,11 @@ input[type="number"]::-webkit-inner-spin-button{
     width: 25%;
     background-color: rgba(230,230,230,.8);
     margin: 10px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .receipt> .sub_title{
-    padding: 10px;
+    padding: 10px 0;
     font-size: 28px;
     border-bottom: 2px solid #000;
 }
@@ -897,26 +897,39 @@ input[type="number"]::-webkit-inner-spin-button{
     border-bottom: 1px solid #000;
 }
 
-.sum > p{
+.sum_p{
+    display: flex;
+}
+
+.sum_p > p{
+    display: flex;
+    flex: 2;
     font-family: 'Noto Sans TC', sans-serif;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 2;
+}
+
+.sum_p >p:nth-child(2){
+    flex: 1;
+    justify-content: flex-end;
 }
 
 .cost{
     padding: 20px 0;
+    display: flex;
 }
 
 .cost > p{
     font-family : 'Noto Sans TC', sans-serif;
     font-size: 18px;
     display: flex;
+    flex: 1;
     line-height: 18px;
 }
 
-.cost > p > span{
+.cost > .strong{
+    justify-content: flex-end;
     font-size: 25px;
-    margin-left: 50%;
 }
 
 .receipt > .btn_group{

@@ -46,7 +46,12 @@ class Cart{
     init(){
         this.box = document.querySelector(".cart_list");
         this.data = this.app.data.data;
-        this.clicked = false;
+        this.p_current = document.querySelector(".current");
+        this.p_total = document.querySelector(".cost > .strong");
+        this.p_delivery = document.querySelector(".delivery");
+        this.current = 0;
+        this.delivery = 0;
+        this.total = 0;
     }
 
     div(x){
@@ -55,6 +60,8 @@ class Cart{
         div.innerHTML = this.cart_template(x.name, x.size, x.color, x.current);
         x.div = div;
         this.event(x);
+        x.clicked = false;
+        x.count = 1;
         this.box.appendChild(x.div);
     }
 
@@ -87,22 +94,44 @@ class Cart{
     event(x){
         x.div.querySelector(".plus").addEventListener("click", (e)=>this.cal(x, "+"));
         x.div.querySelector(".minus").addEventListener("click", (e)=>this.cal(x, "-"));
-        x.div.addEventListener("click", (e)=>this.click(x.div));
+        x.div.querySelector(".check > input").addEventListener("click", (e)=>this.click(x));
     }
 
     click(item){
-        this.cliked = true;
-        this.data.forEach(x=>x.div.classList.remove("active"));
-        item.classList.add("active");
+        if(!item.clicked){
+            item.div.classList.add("active");
+            this.current += item.current * item.div.querySelector("#count").value;
+        } else{
+            item.div.classList.remove("active");
+            this.current -= item.current * item.div.querySelector("#count").value;
+        }
+        item.clicked = !item.clicked;
+        this.receipt();
+    }
+
+    receipt(){
+        this.total = this.current;
+        this.p_current.innerHTML = `\\${Number(this.current).toLocaleString()}`;
+        this.p_total.innerHTML = `\\${Number(this.total).toLocaleString()}`;
     }
 
     cal(x, swit){
         if(swit == "+"){
             x.div.querySelector("#count").value++;
+            if(x.clicked){
+                this.current = x.div.querySelector("#count").value * x.current;
+            }
         } else{
             x.div.querySelector("#count").value = x.div.querySelector("#count").value > 1 ? x.div.querySelector("#count").value - 1 : 1;
+            if(x.clicked){
+                this.current = x.div.querySelector("#count").value * x.current;
+            }
         }
-        x.div.querySelector(".current > .strong").innerHTML = `${Number(x.current * x.div.querySelector("#count").value).toLocaleString()}`;
+        x.total = x.current * x.div.querySelector("#count").value;
+        if(x.clicked){
+            this.receipt();
+        }
+        x.div.querySelector(".current > .strong").innerHTML = `${Number(x.total).toLocaleString()}`;
     }
 }
 
