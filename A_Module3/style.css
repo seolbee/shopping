@@ -35,7 +35,7 @@ header{
 }
 
 .header{
-    position : fixed;
+    position : sticky;
     top: 0;
     z-index : 10;
     background-color : rgb(245,245,245);
@@ -80,7 +80,7 @@ header > div, ul{
     margin-right: 10px;
 }
 
-a.active, .search:hover, form.active{
+a.active, .search:hover, form.active, label.active{
     background-color: #fff;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,.1);
 }
@@ -333,12 +333,12 @@ li.active, .category > li:hover{
     font-size: 18px;
     line-height: 1.6;
     display: flex;
+    flex: 2;
     flex-direction: column;
 }
 
 .card_img > .p_box > .button{
     display: flex;
-    flex: 1;
     justify-content: flex-end;
     text-align: right;
     margin-top: auto;
@@ -461,7 +461,7 @@ select:hover{
 .sub_box{
     padding: 20px 0;
     display: grid;
-    grid-gap: 60px;
+    /* grid-gap: 60px; */
     grid-template-columns: repeat(4, 1fr);
 }
 
@@ -478,8 +478,9 @@ select:hover{
     display: grid;
 }
 
-.sub_box > .card_img > .img_box{
-    width: 1fr;
+.sub_box > .card_img > .img_box {
+    width: 100%;
+    height: auto;
 }
 
 .card{
@@ -639,7 +640,7 @@ select:hover{
 
 .input > input::placeholder{
     font-size: 18px;
-    color: #000;
+    color: #aaa;
 }
 
 .login_box > .small{
@@ -684,7 +685,6 @@ select:hover{
     width: 80%;
     margin: auto;
     padding: 100px 50px;
-    height: 80%;
 }
 
 .view > .text_box > .sub_title{
@@ -761,8 +761,10 @@ select:hover{
 }
 
 .cart{
+    display: flex;
     width: 70%;
     margin: 0 auto;
+    padding: 50px 0;
 }
 
 .cart > .sub_title{
@@ -770,7 +772,6 @@ select:hover{
 }
 
 .cart > .cart_box{
-    display: inline-block;
     width: 70%;
     margin-bottom: 100px;
 }
@@ -869,15 +870,18 @@ input[type="number"]::-webkit-inner-spin-button{
     margin: auto;
 }
 
-.receipt{
-    display: inline-block;
+.receipt_box{
+    margin: 0 15px;
     width: 25%;
-    background-color: rgba(230,230,230,.8);
-    margin: 10px;
-    padding: 15px;
 }
 
-.receipt> .sub_title{
+.receipt{
+    background-color: rgba(230,230,230,.8);
+    padding: 15px;
+    position: sticky;
+}
+
+.receipt > .sub_title, .purchase_receipt > .sub_title , .small_title{
     padding: 10px 0;
     font-size: 28px;
     border-bottom: 2px solid #000;
@@ -942,4 +946,118 @@ input[type="number"]::-webkit-inner-spin-button{
     width: 100%;
     padding: 10px 20px;
     font-size: 20px;
+}
+
+.purchase{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.purchase_list{
+    width: 35%;
+    margin: 0 25px;
+}
+
+.purchase_box{
+    width: 65%;
+}
+
+.customer_info{
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.purchase_receipt{
+    background-color: rgb(230,230,230);
+    width: 100%;
+    padding: 20px;
+    position : sticky;
+    top: 100px;
+}
+
+.customer_info > .input , .cash_receipt > .input{
+    width: 50%;
+    margin: 20px 0;
+    margin-left: 10px;
+}
+/* 
+.customer_info > .input > label{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+} */
+
+.customer_info > .input > input , .cash_receipt > .input > input{
+    font-size: 13px;
+    border-bottom: 1.3px solid #000;
+}
+
+.cash_receipt > .input >input::placeholder{
+    font-size: 13px;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.product_list{
+    display:grid;
+    grid-auto-rows: 100px;
+    grid-gap: 50px;
+    padding: 10px;
+}
+
+.product_box{
+    display: grid;
+    grid-template-columns: 15% 45% 20% 20%;
+    border-bottom: 1px solid #bbb;
+}
+
+.product_box > img{
+    width: 100%;
+    margin: auto;
+}
+
+.product_box > .p_box > .small{
+    font-size: 13px;
+    color: #000;
+}
+
+.product_box > .p_box{
+    margin: auto;
+    line-height: 1.5;
+}
+
+.delivery{
+    margin: auto;
+}
+
+.purchase_receipt > .btn-group{
+    margin : 10px 0;
+}
+
+.purchase_receipt > .btn_group > .btn2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.margin_box{
+    margin: 30px 0;
+}
+
+.cash_receipt{
+
+}
+
+div > span{
+    font-size: 12px;
+}
+
+.margin_box > span{
+    font-size: 15px;
 }
