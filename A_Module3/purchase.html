@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css">
     <script src="js/script.js"></script>
+    <script src="js/purchase.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -92,22 +93,23 @@
                     <div class="money_receipt">
                         <div class="receipt_label margin_box">
                             <span>Cash receipts</span>
+                            <input type="radio" name="abc" id="none" checked>
+                            <input type="radio" name="abc" id="publish">
                             <label for="none" class="btn cash">none</label>
-                            <label for="publish" class="btn active cash">publish</label>
-                            <input type="radio" name="abc" id="none">
-                            <input type="radio" name="abc" id="publish" checked>
-                        </div>
-                        <div class="cash_receipt margin_box">
-                            <span>Issue Purpose</span>
-                            <label for="Personal" class="btn active">Personal</label>
-                            <input type="radio" name="abc" id="Personal" checked>
-                            <label for="For_proof" class="btn">For proof</label>
-                            <input type="radio" name="abc" id="For_proof">
-                            <div class="input">
-                                <input type="text" name="call" id="call" placeholder="Enter phone number">
-                            </div>
-                            <div class="input">
-                                <input type="email" name="email" id="email" placeholder="Enter email">
+                            <label for="publish" class="btn cash">publish</label>
+                            <div class="cash_receipt margin_box">
+                                <span>Issue Purpose</span>
+                                <label for="Personal" class="btn b">Personal</label>
+                                <input type="radio" name="abc" id="Personal" checked>
+                                <label for="For_proof" class="btn b">For proof</label>
+                                <input type="radio" name="abc" id="For_proof">
+                                <div class="input phone_number">
+                                    <input type="text" name="call" id="call_number" placeholder="Enter phone number">
+                                    <input type="text" name="company_number" id="company_number" placeholder="Enter commpany number">
+                                </div>
+                                <div class="input">
+                                    <input type="email" name="email" id="email" placeholder="Enter email">
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -50,7 +50,6 @@ header > div, ul{
 }
 
 .left {
-    flex: 1;
     justify-content: flex-start;
 }
 
@@ -127,7 +126,6 @@ a.active, .search:hover, form.active, label.active{
 }
 
 .right{
-    flex: 1;
     justify-content: flex-end;
 }
 
@@ -212,9 +210,10 @@ a.active, .search:hover, form.active, label.active{
 }
 
 .content{
-    font-size: 18px;
+    font-size: 15px;
     padding-left: 10px;
     padding-top: 10px;
+    color: #555;
 }
 
 .btn2{
@@ -303,18 +302,33 @@ li.active, .category > li:hover{
 }
 
 .card_img{
-    padding: 10px;
     margin: 10px;
     display: inline-block;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
+}
+
+.card_img2{
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
 }
 
 .card_img > .img_box {
     width: 300px;
     height: 300px;
-    border-radius: 10px;
+    /* border-radius: 10px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; */
+}
+
+.card_img2 > .img_box{
+    width: 100%;
+    height: 100%;
 }
 
 .card_img > .img_box > img{
@@ -325,6 +339,7 @@ li.active, .category > li:hover{
 .card_img > .p_box{
     display: flex;
     padding-top: 10px;
+    padding: 10px;
 }
 
 .card_img > .p_box > .sub_p_box{
@@ -360,51 +375,12 @@ li.active, .category > li:hover{
 }
 
 .card_img > .img_box:hover > img{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 0.6s;
-}
-
-.card_img > .img_box > .button_group{
-    display: none;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    text-align: center;
-    transform: translateY(-50%);
-    z-index: 5;
 }
 
 .new_box{
     padding: 50px 0;
-}
-
-.tag{
-    background-color: #111;
-    position: absolute;
-    z-index: 5;
-    color: #fff;
-    line-height: 10px;
-}
-
-.new_tag{
-    padding: 5px 15px;
-}
-
-.new_tage > span{
-    font-size: 18px;
-}
-
-.sale_tag{
-    padding: 8px 10px;
-}
-
-.sale_tag > span{
-    font-size: 15px;
-}
-
-.new_tag > span{
-    font-size: 16px;
-    line-height: 1.4;
 }
 
 span.small{
@@ -461,7 +437,7 @@ select:hover{
 .sub_box{
     padding: 20px 0;
     display: grid;
-    /* grid-gap: 60px; */
+    grid-gap: 50px;
     grid-template-columns: repeat(4, 1fr);
 }
 
@@ -470,18 +446,14 @@ select:hover{
     margin: 50px 100px;
 }
 
-.sub_box > .card{
+.card_img2{
     display: grid;
 }
 
-.sub_box > .card_img{
-    display: grid;
-}
-
-.sub_box > .card_img > .img_box {
-    width: 100%;
-    height: auto;
-}
+/* .sub_box > .card_img > .img_box {
+    width: 200px;
+    height: 200px;
+} */
 
 .card{
     background-color: #fff;
@@ -879,6 +851,7 @@ input[type="number"]::-webkit-inner-spin-button{
     background-color: rgba(230,230,230,.8);
     padding: 15px;
     position: sticky;
+    top: 100px;
 }
 
 .receipt > .sub_title, .purchase_receipt > .sub_title , .small_title{
@@ -1050,14 +1023,86 @@ input[type="radio"]{
     margin: 30px 0;
 }
 
-.cash_receipt{
-
-}
-
 div > span{
     font-size: 12px;
 }
 
 .margin_box > span{
     font-size: 15px;
+}
+
+#all{
+    display: none;
+}
+
+.check_box{
+    display : flex;
+    justify-content: end;
+}
+
+.cash_receipt{
+    display: none;
+}
+
+#company_number{
+    display: none;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+label.check_box{
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.check > label > i{
+    display: none;
+}
+
+.proflie_page{
+    width: 80%;
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+.proflie_page > .sub_title{
+    border-bottom: 2px solid #000;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.order{
+    display: grid;
+    grid-auto-rows: 100px;
+    padding: 20px 0;
+}
+
+.order_box{
+    display: grid;
+    grid-template-columns: 10% 30% 20% 20% 20%;
+    border-bottom: 1px solid #ccc;
+}
+
+.order_box > img{
+    width: 90%;
+    height: 90%;
+    margin: auto;
+}
+
+.order_box > .p_box{
+    padding-left: 10px;
+    margin: auto 0;
+}
+
+.delivery_current{
+    margin: auto;
+}
+
+.order_box:last-child{
+    border: none;
 }

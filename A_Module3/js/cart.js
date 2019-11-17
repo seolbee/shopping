@@ -5,7 +5,7 @@ class Data{
                 name : "신발",
                 color: "white",
                 size : 250,
-                current : 50000
+                current : 20000
             },
             {
                 name : "신발",
@@ -52,6 +52,8 @@ class Cart{
         this.current = 0;
         this.delivery = 0;
         this.total = 0;
+        this.select_btn = document.querySelector(".select");
+        this.All = false;
     }
 
     div(x){
@@ -67,7 +69,7 @@ class Cart{
 
     cart_template(name, size, color, current){
         let template = `<div class="check">
-                            <label for="check"></label>
+                            <label for="check" class="check_box"><i class="fas fa-check"></i></label>
                             <input type="checkbox" name="check" id="check">
                         </div>
                         <img src="img/shoose15.JPG" alt="img">
@@ -94,23 +96,47 @@ class Cart{
     event(x){
         x.div.querySelector(".plus").addEventListener("click", (e)=>this.cal(x, "+"));
         x.div.querySelector(".minus").addEventListener("click", (e)=>this.cal(x, "-"));
-        x.div.querySelector(".check > input").addEventListener("click", (e)=>this.click(x));
+        x.div.querySelector(".check_box").addEventListener("click", (e)=>this.click(x));
+        this.select_btn.addEventListener("click", this.allSelect.bind(this));
+    }
+
+    allSelect(){
+        if(!this.All){
+            this.select_btn.classList.add("active");
+            this.data.forEach(x=>x.clicked = false);
+            this.data.forEach(x=>this.click(x));
+        } else{
+            this.select_btn.classList.remove("active");
+            this.data.forEach(x=>x.clicked = true);
+            this.data.forEach(x=>this.click(x));
+        }
+        this.All = !this.All;
     }
 
     click(item){
         if(!item.clicked){
             item.div.classList.add("active");
             this.current += item.current * item.div.querySelector("#count").value;
+            item.div.querySelector("input").checked = true;
+            item.div.querySelector(".check > label > i").style.display="block";
         } else{
             item.div.classList.remove("active");
             this.current -= item.current * item.div.querySelector("#count").value;
+            item.div.querySelector("input").checked = false;
+            item.div.querySelector(".check > label > i").style.display="none";
         }
         item.clicked = !item.clicked;
         this.receipt();
     }
 
     receipt(){
-        this.total = this.current;
+        if(this.current > 0 && this.current < 50000){
+            this.delivery = 2000;
+        } else{
+            this.delivery = 0;
+        }
+        this.total = this.current + this.delivery;
+        this.p_delivery.innerHTML = `\\${Number(this.delivery).toLocaleString()}`;
         this.p_current.innerHTML = `\\${Number(this.current).toLocaleString()}`;
         this.p_total.innerHTML = `\\${Number(this.total).toLocaleString()}`;
     }
@@ -118,14 +144,11 @@ class Cart{
     cal(x, swit){
         if(swit == "+"){
             x.div.querySelector("#count").value++;
-            if(x.clicked){
-                this.current = x.div.querySelector("#count").value * x.current;
-            }
+            this.current += x.current;
         } else{
-            x.div.querySelector("#count").value = x.div.querySelector("#count").value > 1 ? x.div.querySelector("#count").value - 1 : 1;
-            if(x.clicked){
-                this.current = x.div.querySelector("#count").value * x.current;
-            }
+            if(x.div.querySelector("#count").value <=1) return;
+            x.div.querySelector("#count").value --;
+            this.current -= x.current;
         }
         x.total = x.current * x.div.querySelector("#count").value;
         if(x.clicked){
