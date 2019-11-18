@@ -8,14 +8,6 @@
                         <option value="Lowest price">Lowest price</option>
                         <option value="High price">High price</option>
                     </select>
-                    <!-- <input type="radio" name="popular" id="popular" clicked>
-                    <input type="radio" name="popular" id="popular">
-                    <input type="radio" name="popular" id="popular">
-                    <input type="radio" name="popular" id="popular">
-                    <label for="popular" class="btn">popular</label>
-                    <label for="popular" class="btn">popular</label>
-                    <label for="popular" class="btn">popular</label>
-                    <label for="popular" class="btn">popular</label> -->
                 </div>
             </div>
             <div class="middle">

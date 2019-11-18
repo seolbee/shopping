@@ -18,7 +18,7 @@
                         <p>입금완료</p>
                     </div>
                 </div>
-                <div class="order_box">
+                <!-- <div class="order_box">
                     <img src="img/slip-on4.jpg" alt="img">
                     <div class="p_box">
                         <p>title</p>
@@ -119,7 +119,7 @@
                     <div class="delivery_current">
                         <p>입금완료</p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\DB;
+
 class MainController extends MasterController
 {
     public function index(){
@@ -42,6 +44,11 @@ class MainController extends MasterController
 
     public function view($idx){
         $sql = "SELECT * FROM shopping_product WHERE idx = ?";
-        $this -> render("view")
+        $this -> render("view");
+    }
+
+    public function logout(){
+        unset($_SESSION['user']);
+        DB::startAndGo("로그아웃 완료 메인 페이지로 이동합니다.", "/");
     }
 }

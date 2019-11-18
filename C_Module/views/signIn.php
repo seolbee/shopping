@@ -1,7 +1,7 @@
 <div class="login">
             <div class="login_box">
                 <p class="sub_title">Sign in</p>
-                <form action="" method="post">
+                <form action="/login" method="post">
                     <div class="input">
                         <input type="text" name="id" id="id" placeholder="enter id">
                     </div>

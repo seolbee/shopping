@@ -76,7 +76,7 @@
                         <p class="strong">\ 0</p>
                     </div>
                     <div class="btn_group">
-                        <a href="" class="btn2">Purchase</a>
+                        <a href="/purchase" class="btn2">Purchase</a>
                     </div>
                 </div>
             </div>

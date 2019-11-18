@@ -1,0 +1,1 @@
+INSERT INTO `shopping_brand`(`name`, `call_number`, `email`) VALUES ("nike","080-022-0182","service@nike.co.kr");

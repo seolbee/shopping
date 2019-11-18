@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use App\Route;
 
 define("__ROOT" , dirname(__DIR__));

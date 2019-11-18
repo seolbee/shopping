@@ -19,7 +19,7 @@
     <header>
         <div class="left">
             <div class="logo">
-                <a href="index.html">TrackPicke</a>
+                <a href="/">TrackPicke</a>
             </div>
             <form class="search" action="" method="">
                 <i class="fas fa-align-left"></i>
@@ -28,16 +28,21 @@
             </form>
         </div>
         <ul class="center">
-            <li class="active"><a href="index.html">home</a></li>
-            <li><a href="all.html">category</a></li>
-            <li><a href="brand.html">brand</a></li>
-            <li><a href="sale.html">sale</a></li>
-            <li><a href="review.html">review</a></li>
+            <li <?= $page == "main" ? "class=active" : "" ?>><a href="/">home</a></li>
+            <li <?= $page == "all" ? "class=active" : ""?>><a href="/all">category</a></li>
+            <li <?= $page == "brand" ? "class=active" : ""?>><a href="/brand">brand</a></li>
+            <li <?= $page == "sale" ? "class=active" :""?>><a href="/sale">sale</a></li>
         </ul>
         <div class="right">
             <div class="proflie">
-                <a href="login.html" class="btn"><i class="fas fa-sign-in-alt"></i>sign in</a>
-                <a href="register.html" class="btn"><i class="fas fa-user-plus"></i>sign up</a>
+                <?php if(isset($_SESSION['user'])) : ?>
+                    <a href="/myPage" class="btn <?= $page =="proflie" ? "active" : "" ?>"><i class="fas fa-user"></i><?= $_SESSION['user']->nicname?></a>
+                    <a href="/cart" class="btn <?= $page =="cart" ? "active" : "" ?>" ><i class="fas fa-shopping-cart"></i>My Cart</a>
+                    <a href="/logout" class="btn <?= $page =="logout" ? "active" : "" ?>" ><i class="fas fa-user-slash"></i>logout</a>
+                <?php else :?>
+                    <a href="/signIn" class="btn <?= $page =="signIn" ? "active" : "" ?>" ><i class="fas fa-sign-in-alt"></i>sign in</a>
+                    <a href="/signUp" class="btn <?= $page =="signUp" ? "active" : "" ?>"><i class="fas fa-user-plus"></i>sign up</a>
+                <?php endif;?>
             </div>
         </div>
     </header>

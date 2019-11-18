@@ -16,8 +16,13 @@ Route::get("/signUp", "MainController@signUp");
 
 Route::get("/view", "MainController@view");
 
-if(isset(SESSION['user'])){
+Route::post("/login", "BoardController@login");
+
+Route::post('/register', "BoardController@register");
+
+if(isset($_SESSION['user'])){
     Route::get("/cart", "MainController@cart");
     Route::get("/purchase", "MainController@purchase");
-    Route::get("/myPage", "MainController@proflie");
+    Route::get("/myPage", "MainController@myPage");
+    Route::get("/logout", "MainController@logout");
 }

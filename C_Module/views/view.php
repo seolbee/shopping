@@ -1,6 +1,6 @@
 <div class="page">
-            <div class="view">
-                <div class="img_box">
+        <div class="view">
+            <div class="img_box">
                     <img src="img/shoose12.jpg" alt="img">
                     <ul class="img_nation">
                         <li><img src="" alt=""></li>
