@@ -11,7 +11,9 @@ class MainController extends MasterController
     }
 
     public function all(){
-        $this-> render("all");
+        $sql = "SELECT * FROM shopping_product";
+        $result = DB::fetchAll($sql);
+        $this-> render("all", $result);
     }
 
     public function brand(){
