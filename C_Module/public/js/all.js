@@ -7,14 +7,33 @@ class All{
 
 	async init(){
 		await this.loadData();
-		this.category = document.querySelectorAll(".category_box > li");
+		this.category = document.querySelectorAll(".category > li");
 		this.subBox = document.querySelector(".sub_box");
 		this.select = document.querySelector("#select");
-		this.setProduct();
+		this.setProduct(this.data);
+		this.setCategory();
 	}
 
-	setProduct(){
-		this.data.forEach(x=> this.getDiv(x));
+	setProduct(data){
+		this.subBox.innerHTML = "";
+		data.forEach(x=> this.getDiv(x));
+		console.log(data);
+	}
+
+	setCategory(){
+		this.category.forEach((x)=> x.addEventListener('click', (e)=> this.load(x)));
+	}
+
+	load(x){
+		this.category.forEach(a=> a.classList.remove("active"));
+		x.classList.add("active");
+		console.log(x.dataset.idx);
+		if(x.dataset.idx == 0){
+			this.setProduct(this.data);
+		} else{
+			let data = this.data.filter(a=> x.dataset.idx == a.category);
+			this.setProduct(data);
+		}
 	}
 
 	getDiv(x){
@@ -28,8 +47,12 @@ class All{
 		this.subBox.appendChild(x.div);
 	}
 
-	async loadData(){
-		this.data = await this.app.data.getData("/data");
+	async loadData(like){
+		if(like == null){
+			this.data = await this.app.data.getData("/data");
+		} else{
+			this.data = await this.app.data.getData("/data?id="+like);
+		}
 	}
 
 	event(x){

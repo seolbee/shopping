@@ -12,7 +12,7 @@
             </div>
             <div class="middle">
                 <ul class="category">
-                    <li class="active">all</li>
+                    <li data-idx="0">all</li>
                     <li>10% ~ 20%</li>
                     <li>20% ~ 30%</li>
                     <li>30% ~ 40%</li>

@@ -29,4 +29,5 @@ if(isset($_SESSION['user'])){
     Route::get("/myPage", "MainController@myPage");
     Route::get("/logout", "MainController@logout");
     Route::post("/putcart", "BoardController@put_cart");
+    Route::get("/cart_list", "MainController@cart_list");
 }

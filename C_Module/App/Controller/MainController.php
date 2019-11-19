@@ -11,7 +11,9 @@ class MainController extends MasterController
     }
 
     public function all(){
-        $this-> render("all");
+        $sql = "SELECT * FROM shopping_category";
+        $result = DB::fetchAll($sql);
+        $this-> render("all", ['result'=> $result]);
     }
 
     public function brand(){
@@ -19,6 +21,7 @@ class MainController extends MasterController
     }
 
     public function sale(){
+        $sql = "SELECT * FROM shopping_sale";
         $this -> render("sale");
     }
 
@@ -35,11 +38,17 @@ class MainController extends MasterController
     }
 
     public function purchase(){
-        $this -> render("purchase");
+        if(!isset($_GET['id'])) DB::stopAndBack("잘못된 경로 입니다. 돌아가주세요");
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM shopping_list WHERE id = ?";
+        $result = DB::fetch($sql, [$id]);
+        $this -> render("purchase", ['result'=>$result]);
     }
 
     public function myPage(){
-        $this -> render("proflie");
+        $sql = "SELECT * FROM shopping_list WHERE user_idx = ? AND purchase = 1 AND input = 1";
+        $result = DB::fetchAll($sql, [$_SESSION['user']->idx]);
+        $this -> render("proflie", ['result'=>$result]);
     }
 
     public function view(){
@@ -57,11 +66,18 @@ class MainController extends MasterController
     public function data(){
         if(isset($_GET['id'])){
             $id = $_GET['category'];
-            $sql = "SELECT shopping_product.*, shopping_category.name FROM shopping_product, shopping_category";
+            $sql = "SELECT shopping_product.*, shopping_category.id FROM shopping_product, shopping_category WHERE shopping_category.name = ? AND shopping_category.id = shopping_product.brand_idx";
         } else{
             $sql = "SELECT * FROM shopping_product";
         }
         $result = DB::fetchAll($sql);
+        echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function cart_list(){
+        if(!isset($_SESSION['user'])) DB::stopAndGo("로그인 하지 않은 유저는 들어 올 수 없습니다.");
+        $sql = "SELECT shopping_product.name, shopping_product.current, shopping_product.photo, shopping_list.* FROM shopping_product, shopping_list WHERE user_idx = ? And shopping_product.idx = shopping_list.product_idx AND cart = 1";
+        $result = DB::fetchAll($sql, [$_SESSION['user']->idx]);
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
     }
 }

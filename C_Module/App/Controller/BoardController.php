@@ -89,13 +89,36 @@ class BoardController
         $size = $_POST['size'];
         $count = $_POST['count'];
         $kind = $_POST['kind'];
-        if(empty($id) || empty($size) || empty($count) || empty($kind)){
+        $sql = "SELECT current FROM shopping_product WHERE id = ?";
+        $current= DB::fetch($sql, [$id]);
+        $delivery_cost = $current > 50000 ? 0 : 2000;
+        if(empty($id) || empty($size) || empty($count)){
             DB::stopAndBack("비어 있는 입력란이 있습니다. 확인해 보세요");
-            exit;
         }
 
         if($kind == "cart"){
-            $sql = "SELECT * FROM shopping_list WHERE $id = ? AND user_id = ?";
+            $sql = "SELECT * FROM shopping_list WHERE product_idx = ? AND user_idx = ?";
+            $result = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
+            if($result) DB::stopAndBack("이미 있는 상품 입니다.");
+            $sql = "INSERT INTO shopping_list (product_idx, user_idx, cart, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?)";
+            $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, $size];
+        } else if($kind == "purchase"){
+            $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, input, size) VALUE (?, ?, ?, ?, ?, ?, ?)";
+            $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, 0, $size];
+        } else{
+            DB::stopAndBack("잘못된 경로 입니다. 돌아가주세요");
+        }
+
+        $cnt = DB::query($sql, $param);
+        if($cnt > 0){
+            if($kind == "cart") DB::stopAndBack("장바구니에 담았습니다.");
+            else if($kind == "purchase"){
+                $sql = "SELECT id FROM shopping_list WHERE product_idx = ? AND user_idx = ? AND purchase = 1";
+                $idx = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
+                DB::startAndGo("결제창으로 이동합니다.", "/purchase?id=".$idx);
+            }
+        } else{
+            exit;
         }
     }
 }

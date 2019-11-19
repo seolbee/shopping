@@ -15,12 +15,6 @@
                     <li class="active">nike</li>
                     <li>adidas</li>
                     <li>FILA</li>
-                    <li>puma</li>
-                    <li>Reebok</li>
-                    <li>newbalance</li>
-                    <li>descente</li>
-                    <li>jako</li>
-                    <li>other</li>
                 </ul>
             </div>
             <div class="sub_box">

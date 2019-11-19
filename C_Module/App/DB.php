@@ -51,4 +51,11 @@ class DB
         echo "</script>";
         exit;
     }
+
+    public static function msg($msg){
+        echo "<script>";
+        echo "alert('$msg');";
+        echo "</script>";
+        exit;
+    }
 }
