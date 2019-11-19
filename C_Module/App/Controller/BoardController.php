@@ -62,4 +62,40 @@ class BoardController
     {
     	
     }
+
+    public function likes(){
+        if(!isset($_SESSION['user'])) echo json_encode("로그인 한 유저만 이용 할 수 있습니다.", JSON_UNESCAPED_UNICODE);
+        var_dump($_GET);
+        $id = $_GET['id'];
+        $like = $_GET['like'];
+        $sql = "UPDATE shopping_product SET likes = likes";
+        if($like){
+            $sql .= "+ 1";
+        } else{
+            $sql .= "- 1";
+        }
+        $sql .= " WHERE idx = ?";
+        $cnt = DB::query($sql, [$id]);
+        if($cnt > 0){
+            echo json_encode($like ? "좋아요 한 상품에 추가 되었습니다." : "좋아요 한 상품이 취소 되었습니다.", JSON_UNESCAPED_UNICODE);
+        } else{
+            echo json_encode("오류", JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function put_cart(){
+        if(!isset($_SESSION['user'])) DB::startAndGo("로그인 한 유저만 할 수 있습니다. 로그인 페이지로 이동합니다.", "/signIn");
+        $id = $_POST['id'];
+        $size = $_POST['size'];
+        $count = $_POST['count'];
+        $kind = $_POST['kind'];
+        if(empty($id) || empty($size) || empty($count) || empty($kind)){
+            DB::stopAndBack("비어 있는 입력란이 있습니다. 확인해 보세요");
+            exit;
+        }
+
+        if($kind == "cart"){
+            $sql = "SELECT * FROM shopping_list WHERE $id = ? AND user_id = ?";
+        }
+    }
 }
