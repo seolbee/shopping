@@ -11,7 +11,12 @@ class MainController extends MasterController
     }
 
     public function all(){
-        $sql = "SELECT * FROM shopping_product";
+        if(isset($_GET)){
+            $id = $_GET['category'];
+            $sql = "SELECT shopping_product.*, shopping_category.name FROM shopping_product, shopping_category";
+        } else{
+            $sql = "SELECT * FROM shopping_product";
+        }
         $result = DB::fetchAll($sql);
         $this-> render("all", $result);
     }

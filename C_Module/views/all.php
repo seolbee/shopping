@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card_img card_img2">
+                <!-- <div class="card_img card_img2">
                     <div class="img_box">
                         <img src="img/shoose11.jpg" alt="img">
                     </div>
@@ -123,6 +123,7 @@
                             <a href="" class="btn2">Read more</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
+        <script src="js/all.js"></script>
