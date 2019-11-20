@@ -13,8 +13,8 @@
                     <p class="small">Delivery cost : free</p>
                     <p class="small">Dealer : <?=$data['result']->brand_name?></p>
                     <p class="small">call : <?=$data['result']->call_number?></p>
-                    <form action="" method="post">
-                        <input type="hidden" value="<?=$data['result']->idx?>" name="id">
+                    <form action="/purchase" method="post">
+                        <input type="hidden" value="<?=$data['result']->idx?>" name="id" id="product_idx">
                         <select name="size" id="size">
                             <option value="220">220mm</option>
                             <option value="230">230mm</option>
@@ -31,8 +31,8 @@
                             </div>
                         </div>
                         <div class="btn_group">
-                            <button class="btn2-outline" name="kind" value="cart" type="button">Add to Cart</button>
-                            <button class="btn2" name="kind" value="purchase" type="button">Buy things</button>
+                            <button class="btn2-outline cart_btn" name="kind" value="cart" type="button">Add to Cart</button>
+                            <button class="btn2" name="kind" value="purchase" type="submit">Buy things</button>
                         </div>
                     </form>
                     <div class="btn_group">

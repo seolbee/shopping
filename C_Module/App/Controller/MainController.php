@@ -41,10 +41,13 @@ class MainController extends MasterController
     }
 
     public function purchase(){
-        $id = $_GET['n'];
-        $sql = "SELECT shopping_product.*, shopping_list.product_idx, shopping_list.count, shopping_list.size FROM shopping_list, shopping_product WHERE shopping_list.purchase_number = ? AND shopping_list.product_idx = shopping_product.idx";
+        $id = $_POST['id'];
+        $obj = [$_POST['size'], $_POST['count']];
+        $sql = "SELECT * FROM shopping_product WHERE idx = ?";
         $result = DB::fetchAll($sql, [$id]);
-        $this -> render("purchase", ['result'=>$result]);
+        $result =  $result + $obj;
+        var_dump($result);
+        $this -> render("purchase");
     }
 
     public function myPage(){
@@ -81,5 +84,12 @@ class MainController extends MasterController
         $sql = "SELECT shopping_product.name, shopping_product.current, shopping_product.photo, shopping_list.* FROM shopping_product, shopping_list WHERE user_idx = ? And shopping_product.idx = shopping_list.product_idx AND cart = 1";
         $result = DB::fetchAll($sql, [$_SESSION['user']->idx]);
         echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function search(){
+        $word = $_POST['word'];
+        $sql = "SELECT * FROM shopping_product WHERE name like '%$word%'";
+        $result = DB::fetchAll($sql);
+        $this->render("search", ['result'=>$result]);
     }
 }

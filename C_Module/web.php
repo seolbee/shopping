@@ -22,10 +22,12 @@ Route::post('/register', "BoardController@register");
 
 Route::get("/data", "MainController@data");
 
+Route::post("/search", "MainController@search");
+
 if(isset($_SESSION['user'])){
 	Route::get("/like", "BoardController@likes");
     Route::get("/cart", "MainController@cart");
-    Route::get("/purchase", "MainController@purchase");
+    Route::post("/purchase", "MainController@purchase");
     Route::get("/myPage", "MainController@myPage");
     Route::get("/logout", "MainController@logout");
     Route::post("/putcart", "BoardController@put_cart");
