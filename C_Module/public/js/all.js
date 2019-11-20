@@ -17,7 +17,6 @@ class All{
 	setProduct(data){
 		this.subBox.innerHTML = "";
 		data.forEach(x=> this.getDiv(x));
-		console.log(data);
 	}
 
 	setCategory(){
@@ -27,11 +26,17 @@ class All{
 	load(x){
 		this.category.forEach(a=> a.classList.remove("active"));
 		x.classList.add("active");
-		console.log(x.dataset.idx);
 		if(x.dataset.idx == 0){
 			this.setProduct(this.data);
 		} else{
-			let data = this.data.filter(a=> x.dataset.idx == a.category);
+			console.log(this.app.kind);
+			if(this.app.kind == "all"){
+				let data = this.data.filter(a=> x.dataset.idx == a.category);
+			} else if(this.app.kind == "brand"){
+				let data = this.data.filter(a=> x.dataset.idx == a.brand);
+			} else if(this.app.kind == "sale"){
+				let data = this.data.filter(a=> x.dataset.idx == a.sale_idx);
+			}
 			this.setProduct(data);
 		}
 	}
@@ -97,12 +102,9 @@ class All{
 }
 
 class App{
-	constructor(){
+	constructor(kind){
+		this.kind = kind;
 		this.data = new Data();
 		this.all = new All(this);
 	}
 }
-
-window.addEventListener("load", (e)=>{
-	let a = new App();
-})

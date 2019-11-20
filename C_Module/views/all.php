@@ -3,7 +3,7 @@
                 <p class="sub_title">CATEGORY</p>
                 <div class="select">
                     <select name="order" id="order">
-                        <option value="popluar">popluar</option>
+                        <option value="popluar">popular</option>
                         <option value="Newest">Newest</option>
                         <option value="Lowest price">Lowest price</option>
                         <option value="High price">High price</option>
@@ -23,3 +23,8 @@
         </div>
         <script src="js/Data.js"></script>
         <script src="js/all.js"></script>
+        <script>
+            window.addEventListener("load", (e)=>{
+	            let a = new App("category");
+            })
+        </script>

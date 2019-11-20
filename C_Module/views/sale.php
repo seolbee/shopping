@@ -3,7 +3,7 @@
                 <p class="sub_title">SALE</p>
                 <div class="select">
                     <select name="order" id="order">
-                        <option value="popluar">popluar</option>
+                        <option value="popluar">popular</option>
                         <option value="Newest">Newest</option>
                         <option value="Lowest price">Lowest price</option>
                         <option value="High price">High price</option>
@@ -12,7 +12,7 @@
             </div>
             <div class="middle">
                 <ul class="category">
-                    <li data-idx="0">all</li>
+                    <li data-idx="0" class="active">all</li>
                     <li>10% ~ 20%</li>
                     <li>20% ~ 30%</li>
                     <li>30% ~ 40%</li>

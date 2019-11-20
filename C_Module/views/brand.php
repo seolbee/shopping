@@ -3,7 +3,7 @@
                 <p class="sub_title">Brand</p>
                 <div class="select">
                     <select name="order" id="order">
-                        <option value="popluar">popluar</option>
+                        <option value="popluar">popular</option>
                         <option value="Newest">Newest</option>
                         <option value="Lowest price">Lowest price</option>
                         <option value="High price">High price</option>
@@ -12,9 +12,10 @@
             </div>
             <div class="middle">
                 <ul class="category">
-                    <li class="active">nike</li>
-                    <li>adidas</li>
-                    <li>FILA</li>
+                    <li data-idx="all" class="active">all</li>
+                    <?php foreach($data['result'] as $item) : ?>
+                        <li data-idx="<?=$item->id?>"><?=$item->name?></li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <div class="sub_box">
@@ -120,3 +121,10 @@
                 </div> -->
             </div>
         </div>
+        <script src="js/data.js"></script>
+        <script src="js/all.js"></script>
+        <script>
+            window.addEventListener("load", (e)=>{
+	            let a = new App("brand");
+            })
+       </script>
