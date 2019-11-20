@@ -24,7 +24,8 @@ class MainController extends MasterController
 
     public function sale(){
         $sql = "SELECT * FROM shopping_sale";
-        $this -> render("sale");
+        $result = DB::fetchAll($sql);
+        $this -> render("sale", ["result"=>$result]);
     }
 
     public function signIn(){
@@ -40,10 +41,9 @@ class MainController extends MasterController
     }
 
     public function purchase(){
-        if(!isset($_GET['id'])) DB::stopAndBack("잘못된 경로 입니다. 돌아가주세요");
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM shopping_list WHERE id = ?";
-        $result = DB::fetch($sql, [$id]);
+        $id = $_GET['n'];
+        $sql = "SELECT shopping_product.*, shopping_list.product_idx, shopping_list.count, shopping_list.size FROM shopping_list, shopping_product WHERE shopping_list.purchase_number = ? AND shopping_list.product_idx = shopping_product.idx";
+        $result = DB::fetchAll($sql, [$id]);
         $this -> render("purchase", ['result'=>$result]);
     }
 

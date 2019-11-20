@@ -73,7 +73,7 @@
                 <div class="purchase_receipt">
                     <p class="sub_title">List</p>
                     <div class="product_list">
-                        <div class="product_box">
+                        <!-- <div class="product_box">
                             <img src="img/slip-on.jpg" alt="img">
                             <div class="p_box">
                                 <p>신발</p>
@@ -86,7 +86,23 @@
                             <div class="delivery">
                                 <p>\2,000</p>
                             </div>
-                        </div>
+                        </div> -->
+                        <?php foreach($data['result'] as $item) : ?>
+                            <div class="product_box">
+                                <img src="img/slip-on.jpg" alt="img">
+                                <div class="p_box">
+                                    <p><?=$item->name?></p>
+                                    <p class="small">size : <?=$item->size?>mm</p>
+                                    <p class="small"><?=$item->count?>켤레</p>
+                                </div>
+                                <div class="current">
+                                    <p>\25,000</p>
+                                </div>
+                                <div class="delivery">
+                                    <p>\2,000</p>
+                                </div>
+                            </div> 
+                        <?php endforeach;?>
                     </div>
                     <p class="sub_title">Summary</p>
                     <div class="sum">
@@ -109,3 +125,5 @@
                 </div>
             </div>
         </div>
+
+        <script src="js/purchase.js"></script>

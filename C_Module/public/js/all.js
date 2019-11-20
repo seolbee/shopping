@@ -9,9 +9,10 @@ class All{
 		await this.loadData();
 		this.category = document.querySelectorAll(".category > li");
 		this.subBox = document.querySelector(".sub_box");
-		this.select = document.querySelector("#select");
+		this.select = document.querySelector("#order");
 		this.setProduct(this.data);
 		this.setCategory();
+		this.setAttr();
 	}
 
 	setProduct(data){
@@ -23,19 +24,23 @@ class All{
 		this.category.forEach((x)=> x.addEventListener('click', (e)=> this.load(x)));
 	}
 
+	setAttr(){
+		this.select.addEventListener('change', (e)=> console.log(e));
+	}
+
 	load(x){
 		this.category.forEach(a=> a.classList.remove("active"));
 		x.classList.add("active");
 		if(x.dataset.idx == 0){
 			this.setProduct(this.data);
 		} else{
-			console.log(this.app.kind);
-			if(this.app.kind == "all"){
-				let data = this.data.filter(a=> x.dataset.idx == a.category);
+			let data = null;
+			if(this.app.kind == "category"){
+				data = this.data.filter(a=> x.dataset.idx == a.category);
 			} else if(this.app.kind == "brand"){
-				let data = this.data.filter(a=> x.dataset.idx == a.brand);
+				data = this.data.filter(a=> x.dataset.idx == a.brand);
 			} else if(this.app.kind == "sale"){
-				let data = this.data.filter(a=> x.dataset.idx == a.sale_idx);
+				data = this.data.filter(a=> x.dataset.idx == a.sale_category);
 			}
 			this.setProduct(data);
 		}
@@ -45,7 +50,7 @@ class All{
 		x.div = document.createElement("div");
 		x.div.classList.add("card_img");
 		x.div.classList.add("card_img2");
-		x.div.innerHTML = this.card_template(x.idx, x.name, x.photo, x.current, x.sales, x.likes, x.link);
+		x.div.innerHTML = this.card_template(x.idx, x.name, x.photo, x.current, x.sales, x.likes, x.sale_per);
 		x.heart_clicked= false;
 		x.cart_clicked = false;
 		this.event(x);
@@ -53,11 +58,7 @@ class All{
 	}
 
 	async loadData(like){
-		if(like == null){
-			this.data = await this.app.data.getData("/data");
-		} else{
-			this.data = await this.app.data.getData("/data?id="+like);
-		}
+		this.data = await this.app.data.getData("/data");
 	}
 
 	event(x){
@@ -77,20 +78,19 @@ class All{
 		alert(mg);
 	}
 
-	card_template(idx, title, src, current, sales, like){
+	card_template(idx, title, src, current, sales, like, sale_per){
 		let template = `<div class="img_box">
                         	<img src="${src}" alt="img">
                     	</div>
                     	<div class="p_box">
                         	<div class="sub_p_box">
-                            	<p class="small">50% sale</p>
+                            	<p class="small">${sale_per}% sale</p>
                             	<p>${title}</p>
-                            	<p><span class="small">\\${Number(current).toLocaleString()}</span> <span class="strong">\\${Number(current).toLocaleString()}</span></p>
+                            	<p><span class="small">\\${Number(current).toLocaleString()}</span> <span class="strong">\\${Number(current - ( current * (sale_per / 100))).toLocaleString()}</span></p>
                             	<p class="small">Sales : ${sales}</p>
                             	<p class="small">Likes : ${like}</p>
                             	<div class="i_group">
                                 	<i class="far fa-heart"></i>
-                                	<i class="fas fa-cart-plus"></i>
                             	</div>
                         	</div>
                         	<div class="button">

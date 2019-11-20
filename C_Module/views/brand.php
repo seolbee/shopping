@@ -3,7 +3,7 @@
                 <p class="sub_title">Brand</p>
                 <div class="select">
                     <select name="order" id="order">
-                        <option value="popluar">popular</option>
+                        <option value="popular">popular</option>
                         <option value="Newest">Newest</option>
                         <option value="Lowest price">Lowest price</option>
                         <option value="High price">High price</option>
@@ -12,7 +12,7 @@
             </div>
             <div class="middle">
                 <ul class="category">
-                    <li data-idx="all" class="active">all</li>
+                    <li data-idx="0" class="active">all</li>
                     <?php foreach($data['result'] as $item) : ?>
                         <li data-idx="<?=$item->id?>"><?=$item->name?></li>
                     <?php endforeach;?>

@@ -103,19 +103,20 @@ class BoardController
             $sql = "INSERT INTO shopping_list (product_idx, user_idx, cart, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?)";
             $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, $size];
         } else if($kind == "purchase"){
-            $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, input, size) VALUE (?, ?, ?, ?, ?, ?, ?)";
-            $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, 0, $size];
+            $purchase_number = date("is") . $id . date("md");
+            echo $purchase_number;
+            $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, input, size, purchase_number) VALUE (?, ?, ?, ?, ?, ?, ?, ?)";
+            $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, 0, $size, $purchase_number];
         } else{
             DB::stopAndBack("잘못된 경로 입니다. 돌아가주세요");
         }
-
+        echo $purchase_number;
         $cnt = DB::query($sql, $param);
         if($cnt > 0){
             if($kind == "cart") DB::stopAndBack("장바구니에 담았습니다.");
             else if($kind == "purchase"){
-                $sql = "SELECT id FROM shopping_list WHERE product_idx = ? AND user_idx = ? AND purchase = 1";
-                $idx = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
-                DB::startAndGo("결제창으로 이동합니다.", "/purchase?id=".$idx);
+                echo $purchase_number;
+                DB::startAndGo("결제창으로 이동합니다.", "/purchase?n=$purchase_number");
             }
         } else{
             exit;

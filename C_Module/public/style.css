@@ -573,15 +573,14 @@ select:hover{
     width: 100%;
     margin: auto;
     padding: 50px 0;
-    height: 900px;
 }
 
 .login_box{
     width: 25%;
     height: 100%;
     margin: auto;
-    padding: 50px 0;
-    padding-top: 150px;
+    padding: 100px 0;
+    padding-top: 80px;
     text-align: center;
 }
 

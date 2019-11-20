@@ -1,7 +1,7 @@
 <div class="visual">
             <div class="title_box">
                 <p class="title">
-                    Welcom to <span>TrackPick</span>
+                    Welcome to <span>TrackPicke</span>
                 </p>
                 <p class="content">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, porro pariatur possimus dolor rerum,
