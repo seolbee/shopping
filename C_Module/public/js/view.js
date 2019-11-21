@@ -11,14 +11,16 @@ window.addEventListener("load", function(e){
 	plus.addEventListener("click", (e)=> input.value++);
 	minus.addEventListener("click", (e)=> input.value = input.value > 1 ? input.value-1 : 1);
 	cart.addEventListener("click", (e)=> {
-		query("/putcart", id, count, size, form, "cart");
+		//query("/putcart", id, count, size, form);
 	})
 })
 
 function query(link, id, count, size, form){
+	console.log(id, count, size);
 	form.append("id", id.value);
 	form.append("count", count.value);
-	form.append("size", size.value);
+	form.append("size", size.options[size.selectedIndex].value);
+	console.log(form);
 	fetch(link, {
 		method:"post",
 		headers:{

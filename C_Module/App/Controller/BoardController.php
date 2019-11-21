@@ -92,41 +92,33 @@ class BoardController
 
     public function put_cart(){
         if(!isset($_SESSION['user'])) DB::startAndGo("로그인 한 유저만 할 수 있습니다. 로그인 페이지로 이동합니다.", "/signIn");
-        var_dump($_POST);
         $id = $_POST['id'];
         $size = $_POST['size'];
         $count = $_POST['count'];
+        $kind = $_POST['kind'];
         $sql = "SELECT current FROM shopping_product WHERE id = ?";
         $current= DB::fetch($sql, [$id]);
         $delivery_cost = $current > 50000 ? 0 : 2000;
         if(empty($id) || empty($size) || empty($count)){
             DB::stopAndBack("비어 있는 입력란이 있습니다. 확인해 보세요");
         }
-         $sql = "SELECT * FROM shopping_list WHERE product_idx = ? AND user_idx = ?";
-        $result = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
-        if($result) DB::stopAndBack("이미 있는 상품 입니다.");
-        $sql = "INSERT INTO shopping_list (product_idx, user_idx, cart, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?)";
-        $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, $size];
-
-        // if($kind == "cart"){
-           
-        // } else if($kind == "purchase"){
-        //     $purchase_number = date("is") . $id . date("md");
-        //     echo $purchase_number;
-        //     $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, input, size, purchase_number) VALUE (?, ?, ?, ?, ?, ?, ?, ?)";
-        //     $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, 0, $size, $purchase_number];
-        // } else{
-        //     DB::stopAndBack("잘못된 경로 입니다. 돌아가주세요");
-        // }
-        $cnt = DB::query($sql, $param);
-        if($cnt > 0){
-            if($kind == "cart") DB::stopAndBack("장바구니에 담았습니다.");
-            else if($kind == "purchase"){
-                echo $purchase_number;
-                DB::startAndGo("결제창으로 이동합니다.", "/purchase?n=$purchase_number");
+        if($kind == "cart"){
+            $sql = "SELECT * FROM shopping_list WHERE product_idx = ? AND user_idx = ?";
+            $result = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
+            if($result) DB::stopAndBack("이미 있는 상품 입니다.");
+            $sql = "INSERT INTO shopping_list (product_idx, user_idx, cart, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?, ?)";
+            $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, $size];
+            $cnt = DB::query($sql, $param);
+            if($cnt > 0){
+                DB::stopAndBack("장바구니에 담았습니다.");
+            } else{
+                exit;
             }
-        } else{
-            exit;
+        } else if($kind == "purchase"){
+            $_SESSION['purchase'] = $_POST;
+            DB::startAndGo("결제창으로 이동합니다.", "/purchase");
+        }else{
+            DB::stopAndBack("잘못된 경로 입니다. 돌아가 주세요");
         }
     }
 
