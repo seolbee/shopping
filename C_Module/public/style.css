@@ -1128,3 +1128,18 @@ label.check_box{
     width: 200px;
     margin: 0;
 }
+
+.cancel_box{
+    margin: auto;
+}
+
+.cancel_box > a > i{
+    font-size: 30px;
+    color: #ccc;
+}
+
+.cancel_box > a > i:hover{
+    color: #f54242;
+    transform: scale(1.1);
+    transition: all 0.5s;
+}

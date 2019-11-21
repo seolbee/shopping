@@ -53,7 +53,9 @@ class MainController extends MasterController
     public function myPage(){
         $sql = "SELECT * FROM shopping_list WHERE user_idx = ? AND purchase = 1 AND input = 1";
         $result = DB::fetchAll($sql, [$_SESSION['user']->idx]);
-        $this -> render("proflie", ['result'=>$result]);
+        $sql = "SELECT shopping_product.*, shopping_likes.id FROM shopping_product, shopping_likes WHERE shopping_likes.user_idx = ? AND shopping_likes.product_idx = shopping_product.idx";
+        $result2 = DB::fetchAll($sql, [$_SESSION['user']->idx]);
+        $this -> render("proflie", ['result'=>$result, 'like'=>$result2]);
     }
 
     public function view(){
@@ -73,7 +75,7 @@ class MainController extends MasterController
             $id = $_GET['category'];
             $sql = "SELECT shopping_product.*, shopping_category.id FROM shopping_product, shopping_category WHERE shopping_category.name = ? AND shopping_category.id = shopping_product.brand_idx";
         } else{
-            $sql = "SELECT * FROM shopping_product";
+            $sql = "SELECT shopping_product.* FROM shopping_product";
         }
         $result = DB::fetchAll($sql);
         echo json_encode($result, JSON_UNESCAPED_UNICODE);

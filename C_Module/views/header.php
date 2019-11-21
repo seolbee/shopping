@@ -21,7 +21,7 @@
             <div class="logo">
                 <a href="/">TrackPicke</a>
             </div>
-            <form class="search" action="" method="post">
+            <form class="search" action="/search" method="post">
                 <i class="fas fa-align-left"></i>
                 <input type="text" name="word" id="search" placeholder="search">
                 <button type="button"><i class="fas fa-search"></i></button>

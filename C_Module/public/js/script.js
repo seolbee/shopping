@@ -1,4 +1,4 @@
-class App{
+class app{
     constructor(app){
         this.app = app;
         this.init();
@@ -16,6 +16,10 @@ class App{
         window.addEventListener("scroll", this.move.bind(this));
         this.search.addEventListener("click", this.active.bind(this));
         this.search.addEventListener("input", (e)=>this.search());
+    }
+
+    async loadData(){
+        this.data = await this.app.data.getData("/data");
     }
 
     search(){
@@ -42,8 +46,7 @@ class App{
 
 class script{
     constructor(){
-        this.data = new Data();
-        this.app = new App(this);
+        this.app = new app(this);
     }
 }
 

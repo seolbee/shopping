@@ -57,7 +57,7 @@ class All{
 		this.subBox.appendChild(x.div);
 	}
 
-	async loadData(like){
+	async loadData(){
 		this.data = await this.app.data.getData("/data");
 	}
 
@@ -66,16 +66,20 @@ class All{
 	}
 
 	async likes(x, e){
+		let mg = await this.app.data.getFetch(`/like?id=${x.idx}&&like=${x.heart_clicked}`);
+		if(!mg.like) return;
 		if(!x.heart_clicked){
 			e.target.classList.remove("far");
 			e.target.classList.add("fas");
+			alert("좋아요 한 상품에 추가 되었습니다.");
+			x.div.querySelector(".like").innerHTML = `Likes : ${++x.likes}`;
 		} else{
 			e.target.classList.remove("fas");
 			e.target.classList.add("far");
+			alert("좋아요 한 상품이 취소되었습니다.");
+			x.div.querySelector(".like").innerHTML = `Likes : ${--x.likes}`;
 		}
 		x.heart_clicked = !x.heart_clicked;
-		let mg = await this.app.data.getFetch(`/like?id=${x.idx}&&like=${x.heart_clicked}`);
-		alert(mg);
 	}
 
 	card_template(idx, title, src, current, sales, like, sale_per){
@@ -88,7 +92,7 @@ class All{
                             	<p>${title}</p>
                             	<p><span class="small">\\${Number(current).toLocaleString()}</span> <span class="strong">\\${Number(current - ( current * (sale_per / 100))).toLocaleString()}</span></p>
                             	<p class="small">Sales : ${sales}</p>
-                            	<p class="small">Likes : ${like}</p>
+                            	<p class="small like">Likes : ${like}</p>
                             	<div class="i_group">
                                 	<i class="far fa-heart"></i>
                             	</div>

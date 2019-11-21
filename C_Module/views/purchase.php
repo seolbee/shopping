@@ -96,7 +96,7 @@
                                     <p class="small"><?=$item->count?>켤레</p>
                                 </div>
                                 <div class="current">
-                                    <p>\25,000</p>
+                                    <p>\<?=number_format($item->)?></p>
                                 </div>
                                 <div class="delivery">
                                     <p>\2,000</p>
