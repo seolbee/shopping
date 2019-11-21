@@ -1,5 +1,6 @@
-class app{
-    constructor(){
+class App{
+    constructor(app){
+        this.app = app;
         this.init();
         this.move();
         this.event();
@@ -14,6 +15,11 @@ class app{
     event(){
         window.addEventListener("scroll", this.move.bind(this));
         this.search.addEventListener("click", this.active.bind(this));
+        this.search.addEventListener("input", (e)=>this.search());
+    }
+
+    search(){
+        
     }
 
     move(){
@@ -34,6 +40,13 @@ class app{
     }
 }
 
+class script{
+    constructor(){
+        this.data = new Data();
+        this.app = new App(this);
+    }
+}
+
 window.addEventListener("load", (e)=>{
-    let App = new app();
+    let s= new script();
 })

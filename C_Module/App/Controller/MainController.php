@@ -87,9 +87,12 @@ class MainController extends MasterController
     }
 
     public function search(){
+        $this->render("search");
+    }
+
+    public function search_list(){
         $word = $_POST['word'];
         $sql = "SELECT * FROM shopping_product WHERE name like '%$word%'";
         $result = DB::fetchAll($sql);
-        $this->render("search", ['result'=>$result]);
     }
 }
