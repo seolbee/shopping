@@ -41,11 +41,9 @@ class MainController extends MasterController
     }
 
     public function purchase(){
-        $id = $_POST['id'];
-        $obj = [$_POST['size'], $_POST['count']];
+        $id = $_SESSION['purchase']['id'];
         $sql = "SELECT * FROM shopping_product WHERE idx = ?";
         $result = DB::fetchAll($sql, [$id]);
-        $result =  $result + $obj;
         var_dump($result);
         $this -> render("purchase");
     }

@@ -106,9 +106,8 @@ class BoardController
             $sql = "SELECT * FROM shopping_list WHERE product_idx = ? AND user_idx = ?";
             $result = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
             if($result) DB::stopAndBack("이미 있는 상품 입니다.");
-            $sql = "INSERT INTO shopping_list (product_idx, user_idx, cart, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?, ?)";
-            $param = [$id, $_SESSION['user']->idx, 1, $delivery_cost, $count, $size];
-            $cnt = DB::query($sql, $param);
+            $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?)";
+            $cnt = DB::query($sql, [$id, $_SESSION['user']->idx, 0, $delivery_cost, $count, $size]);
             if($cnt > 0){
                 DB::stopAndBack("장바구니에 담았습니다.");
             } else{

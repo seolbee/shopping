@@ -20,7 +20,7 @@ class Route
         }
 
         // echo "존재하지 않는 페이지 입니다.";
-        DB::stopAndBack("권한이 없는 페이지 입니다.");
+        DB::startAndGo("로그인이 필요한 서비스 입니다.", "/signIn");
         exit;
     }
 
