@@ -4,30 +4,30 @@
                 <div class="customer_info">
                     <div class="input">
                         <label for="name">name</label>
-                        <input type="text" name="name" value="name">
+                        <input type="text" name="name" value="<?=$_SESSION['user']->nicname?>">
                     </div>
                     <div class="input">
                         <label for="cal">call</label>
-                        <input type="text" name="cal" value="cal">
+                        <input type="text" name="cal" value="<?=$_SESSION['user']->phone_number?>">
                     </div>
                     <div class="input">
                         <label for="email">email</label>
-                        <input type="email" name="email" value="email">
+                        <input type="email" name="email" value="<?=$_SESSION['user']->email?>">
                     </div>
                 </div>
                 <p class="sub_title small_title">Delivery Infomation</p>
                 <div class="customer_info">
                     <div class="input">
                         <label for="address">address</label>
-                        <input type="text" name="address" id="address" value="address">
+                        <input type="text" name="address" id="address" value="<?=$_SESSION['user']->address?>">
                     </div>
                     <div class="input">
                         <label for="Detailed_address">detailed address</label>
-                        <input type="text" name="detailed_address" id="Detailed_address" value="detailed_address">
+                        <input type="text" name="detailed_address" id="Detailed_address" value="<?=$_SESSION['user']->detailed_address?>">
                     </div>
                     <div class="input">
                         <label for="Recipient">Recipient</label>
-                        <input type="text" name="name" value="name">
+                        <input type="text" name="name" value="<?=$_SESSION['user']->nicname?>">
                     </div>
                 </div>
                 <p class="sub_title small_title">method of payment</p>
@@ -89,38 +89,38 @@
                         </div> -->
                         <?php foreach($data['result'] as $item) : ?>
                             <div class="product_box">
-                                <img src="img/slip-on.jpg" alt="img">
+                                <img src="<?=$item->photo?>" alt="img">
                                 <div class="p_box">
                                     <p><?=$item->name?></p>
                                     <p class="small">size : <?=$item->size?>mm</p>
                                     <p class="small"><?=$item->count?>켤레</p>
                                 </div>
                                 <div class="current">
-                                    <p>\<?=number_format($item->)?></p>
+                                   <p>\<?=number_format($item->current)?></p>
                                 </div>
                                 <div class="delivery">
-                                    <p>\2,000</p>
+                                    <p>\<?=number_format($item->current - ($item->current * $item->sale_per / 100))?></p>
                                 </div>
-                            </div> 
+                            </div>
                         <?php endforeach;?>
                     </div>
                     <p class="sub_title">Summary</p>
                     <div class="sum">
                         <div class="sum_p">
                             <p>Value of Products : </p>
-                            <p class="current">\ 0</p>
+                            <p class="current">\ <?=number_format($data['sum']->sum_current)?></p>
                         </div>
                         <div class="sum_p">
                             <p>Delivery Cost : </p>
-                            <p class="delivery">\ 0</p>
+                            <p class="delivery">\ <?=number_format($data['delivery'])?></p>
                         </div>
                     </div>
                     <div class="cost">
                         <p>Total:</p>
-                        <p class="strong">\ 0</p>
+                        <p class="strong">\ <?=number_format($data['sum']->sum_current + $data['delivery'])?></p>
                     </div>
                     <div class="btn_group">
-                        <a href="" class="btn2">Purchase</a>
+                        <button class="btn2 purchase_btn">Purchase</button>
                     </div>
                 </div>
             </div>

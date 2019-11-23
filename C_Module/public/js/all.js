@@ -10,7 +10,7 @@ class All{
 		this.category = document.querySelectorAll(".category > li");
 		this.subBox = document.querySelector(".sub_box");
 		this.select = document.querySelector("#order");
-		this.setProduct(this.data);
+		this.setProduct(this.data.result);
 		this.setCategory();
 		this.setAttr();
 	}
@@ -25,7 +25,30 @@ class All{
 	}
 
 	setAttr(){
-		this.select.addEventListener('change', (e)=> console.log(e));
+		this.select.addEventListener('change', (e)=> this.change());
+	}
+
+	change(){
+		let order = this.select.options[this.select.selectedIndex].value;
+		if(order == "sales"){
+			this.data.result.sort(function(a,b){
+				return b.sales - a.sales;
+			})
+		} else if(order == "date"){
+			this.data.result.sort(function(a,b){
+				return Date.parse(b.Release_date) - Date.parse(a.Release_date);
+			})
+		} else if(order == "Lowest price"){
+			this.data.result.sort(function(a,b){
+				return (a.current - (a.current * a.sale_per / 100)) - (b.current - (b.current * b.sale_per / 100));
+			})
+		} else if(order == "High price"){
+			this.data.result.sort(function(a,b){
+				return (b.current - (b.current * b.sale_per / 100)) - (a.current - (a.current * a.sale_per / 100));
+			})
+		}
+
+		this.setProduct(this.data.result);
 	}
 
 	load(x){
@@ -36,11 +59,11 @@ class All{
 		} else{
 			let data = null;
 			if(this.app.kind == "category"){
-				data = this.data.filter(a=> x.dataset.idx == a.category);
+				data = this.data.result.filter(a=> x.dataset.idx == a.category);
 			} else if(this.app.kind == "brand"){
-				data = this.data.filter(a=> x.dataset.idx == a.brand);
+				data = this.data.result.filter(a=> x.dataset.idx == a.brand);
 			} else if(this.app.kind == "sale"){
-				data = this.data.filter(a=> x.dataset.idx == a.sale_category);
+				data = this.data.result.filter(a=> x.dataset.idx == a.sale_category);
 			}
 			this.setProduct(data);
 		}
@@ -51,14 +74,31 @@ class All{
 		x.div.classList.add("card_img");
 		x.div.classList.add("card_img2");
 		x.div.innerHTML = this.card_template(x.idx, x.name, x.photo, x.current, x.sales, x.likes, x.sale_per);
-		x.heart_clicked= false;
 		x.cart_clicked = false;
+		if(this.data.user.length > 0){
+			this.data.user.forEach(a=>{
+				if(x.idx == a.product_idx){
+					x.div.querySelector(".i_group > .fa-heart").classList.add("fas");
+					x.heart_clicked= true;
+				} else{
+					x.div.querySelector(".i_group > .fa-heart").classList.add("far");
+					x.heart_clicked= false;
+				}
+			})
+		} else{
+			x.div.querySelector(".i_group > .fa-heart").classList.add("far");
+			x.heart_clicked = false;
+		}
 		this.event(x);
 		this.subBox.appendChild(x.div);
 	}
 
 	async loadData(){
-		this.data = await this.app.data.getData("/data");
+		if(this.app.kind == "search"){
+			this.data = await this.app.data.getData("/search_product");
+		} else{
+			this.data = await this.app.data.getData("/data");
+		}
 	}
 
 	event(x){
@@ -82,7 +122,7 @@ class All{
 		x.heart_clicked = !x.heart_clicked;
 	}
 
-	card_template(idx, title, src, current, sales, like, sale_per){
+	card_template(idx, title, src, current, sales, like, sale_per, user){
 		let template = `<div class="img_box">
                         	<img src="${src}" alt="img">
                     	</div>
@@ -93,8 +133,8 @@ class All{
                             	<p><span class="small">\\${Number(current).toLocaleString()}</span> <span class="strong">\\${Number(current - ( current * (sale_per / 100))).toLocaleString()}</span></p>
                             	<p class="small">Sales : ${sales}</p>
                             	<p class="small like">Likes : ${like}</p>
-                            	<div class="i_group">
-                                	<i class="far fa-heart"></i>
+								<div class="i_group">
+                                	<i class="fa-heart"></i>
                             	</div>
                         	</div>
                         	<div class="button">

@@ -682,7 +682,7 @@ select:hover{
     font-size: 35px;
 }
 
-.text_box > p > span{
+.text_box > p > .strong{
     font-size: 25px;
 }
 
@@ -994,7 +994,6 @@ input[type="radio"]{
 .product_list{
     display:grid;
     grid-auto-rows: 100px;
-    grid-gap: 50px;
     padding: 10px;
 }
 
@@ -1142,4 +1141,41 @@ label.check_box{
     color: #f54242;
     transform: scale(1.1);
     transition: all 0.5s;
+}
+
+.proflie_box{
+    width: 100%;
+    border-radius: 5px;
+    color: #fff;
+    padding-top: 150px;
+    padding-bottom: 20px;
+    line-height: 1.7;
+    background-color: #333;
+    padding-left: 20px;
+}
+
+.proflie_box > .p_box > a{
+    margin-top: 10px;
+}
+
+.border_box{
+    width: 50%;
+    margin: auto;
+    height: 500px;
+    text-align: center;
+}
+
+.border_title{
+    text-align: center;
+    margin: auto 0;
+    padding-top: 250px;
+    line-height: 1.9;
+}
+
+.button_group2{
+    margin: 10px 0;
+}
+
+.button_group2 > a{
+    padding: 10px 20px;
 }

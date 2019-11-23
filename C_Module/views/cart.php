@@ -76,10 +76,9 @@
                         <p class="strong">\ 0</p>
                     </div>
                     <div class="btn_group">
-                        <a href="/purchase" class="btn2">Purchase</a>
+                        <a href="#" class="btn2 purchase_btn">Purchase</a>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="js/Data.js"></script>
         <script src="js/cart.js"></script>

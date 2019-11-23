@@ -9,11 +9,12 @@
                 <div class="text_box">
                     <p class="sub_title"><?=$data['result']->name?></p>
                     <p><i class="fas fa-heart"></i> <?=$data['result']->likes?> <i class="fas fa-shopping-cart"></i> <?=$data['result']->sales?></p>
-                    <p><span class="strong">\<?=number_format($data['result']->current)?></span></p>
+                    <p><span class="small">\<?=number_format($data['result']->current)?></span> <span class="strong">\<?=number_format($data['result']->current - ($data['result']->current * $data['result']->sale_per / 100))?></span></p>
                     <p class="small">Delivery cost : free</p>
                     <p class="small">Dealer : <?=$data['result']->brand_name?></p>
                     <p class="small">call : <?=$data['result']->call_number?></p>
                     <form action="/putcart" method="post">
+                        <input type="hidden" value="<?=date("is").$data['result']->idx.date("md")?>" name="purchase_number" id="product_idx">
                         <input type="hidden" value="<?=$data['result']->idx?>" name="id" id="product_idx">
                         <select name="size" id="size">
                             <option value="220">220mm</option>

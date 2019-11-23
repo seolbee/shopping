@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css">
+    <script src="js/Data.js"></script>
     <script src="js/script.js"></script>
 </head>
 
@@ -21,11 +22,11 @@
             <div class="logo">
                 <a href="/">TrackPicke</a>
             </div>
-            <form class="search" action="/search" method="post">
+            <div class="search">
                 <i class="fas fa-align-left"></i>
                 <input type="text" name="word" id="search" placeholder="search">
                 <button type="button"><i class="fas fa-search"></i></button>
-            </form>
+            </div>
         </div>
         <ul class="center">
             <li <?= $page == "main" ? "class=active" : "" ?>><a href="/">home</a></li>

@@ -15,8 +15,11 @@ class Cart{
         this.delivery = 0;
         this.total = 0;
         this.select_btn = document.querySelector(".select");
+        this.purchase = document.querySelector(".purchase_btn");
         this.All = false;
         this.data.forEach(x=>this.div(x));
+        this.allEvent();
+        this.select = [];
     }
 
     async loadData(){
@@ -26,25 +29,31 @@ class Cart{
     div(x){
         let div = document.createElement("div");
         div.classList.add("cart_card");
-        div.innerHTML = this.cart_template(x.name, x.size, x.current, x.count);
+        div.innerHTML = this.cart_template(x.photo, x.name, x.size, x.current, x.count, x.sale_per);
         x.div = div;
-        this.event(x);
         x.clicked = false;
         x.count = 1;
+        x.current = x.current - (x.current * x.sale_per / 100);
         x.total = x.current * x.count;
         this.box.appendChild(x.div);
+        this.event(x);
     }
 
-    cart_template(name, size, current, count){
+    allEvent(){
+        this.select_btn.addEventListener("click", this.allSelect.bind(this));
+        this.purchase.addEventListener("click", this.post.bind(this));
+    }
+
+    cart_template(img, name, size, current, count, sale_per){
         let template = `<div class="check">
                             <label for="check" class="check_box"><i class="fas fa-check"></i></label>
                             <input type="checkbox" name="check" id="check">
                         </div>
-                        <img src="img/shoose15.JPG" alt="img">
+                        <img src="${img}" alt="img">
                         <div class="info">
                             <p>${name}</p>
                             <p class="small">size : ${size}mm</p>
-                            <p class="strong">\\ ${Number(current).toLocaleString()}</p>
+                            <p><span class="small">\\${Number(current).toLocaleString()}</span> <span class="strong">\\${Number(current-(current * sale_per / 100)).toLocaleString()}</span></p>
                         </div>
                         <div class="count_box">
                             <div class="count">
@@ -56,7 +65,7 @@ class Cart{
                             </div>
                         </div>
                         <div class="current">
-                            <p class="strong">\\ ${Number(current).toLocaleString()}</p>
+                            <p class="strong">\\${Number(current-(current * sale_per/100)).toLocaleString()}</p>
                         </div>`
         return template;
     }
@@ -65,7 +74,6 @@ class Cart{
         x.div.querySelector(".plus").addEventListener("click", (e)=>this.cal(x, "+"));
         x.div.querySelector(".minus").addEventListener("click", (e)=>this.cal(x, "-"));
         x.div.querySelector(".check_box").addEventListener("click", (e)=>this.click(x));
-        this.select_btn.addEventListener("click", this.allSelect.bind(this));
     }
 
     allSelect(){
@@ -88,11 +96,13 @@ class Cart{
             this.current += item.total * 1;
             item.div.querySelector("input").checked = true;
             item.div.querySelector(".check > label > i").style.display="block";
+            this.select.push(item);
         } else{
             item.div.classList.remove("active");
             this.current -= item.total * 1;
             item.div.querySelector("input").checked = false;
             item.div.querySelector(".check > label > i").style.display="none";
+            this.select.splice(item.idx, 1);
         }
         item.clicked = !item.clicked;
         this.receipt();
@@ -110,6 +120,23 @@ class Cart{
         this.p_total.innerHTML = `\\${Number(this.total).toLocaleString()}`;
     }
 
+    post(){
+        let d = new Date();
+        let purchase_number = d.getMinutes().toString() + d.getSeconds().toString() + `${this.select[0].id}` + (d.getMonth() + 1).toString() + d.getDay().toString(); 
+        this.select.forEach(x=>{
+            let formdata = new FormData();
+            formdata.append("id", x.id);
+            formdata.append("count", x.count);
+            formdata.append("kind", "purchase");
+            formdata.append("size", x.size);
+            formdata.append("purchase_number", purchase_number);
+            fetch("/putcart", {
+                method:"post",
+                body:formdata
+            }).then(e=>location.href="/purchase");
+        })
+    }
+
     cal(x, swit){
         if(swit == "+"){
             x.div.querySelector("#count").value++;
@@ -123,11 +150,11 @@ class Cart{
         if(x.clicked){
             this.receipt();
         }
-        x.div.querySelector(".current > .strong").innerHTML = `\\ ${Number(x.total).toLocaleString()}`;
+        x.div.querySelector(".current > .strong").innerHTML = `\\${Number(x.total).toLocaleString()}`;
     }
 }
 
-class App{
+class a{
     constructor(){
         this.data = new Data();
         this.cart = new Cart(this);
@@ -135,5 +162,5 @@ class App{
 }
 
 window.addEventListener("load", (e)=>{
-    let app = new App();
+    let app = new a();
 })

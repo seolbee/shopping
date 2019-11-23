@@ -22,9 +22,13 @@ Route::post('/register', "BoardController@register");
 
 Route::get("/data", "MainController@data");
 
-Route::post("/search", "MainController@search");
-
 Route::get("/like", "BoardController@likes");
+
+Route::post("/search_list", "MainController@search_list");
+
+Route::get("/search", "MainController@search");
+
+Route::get("/search_product", "MainController@search_product");
 
 if(isset($_SESSION['user'])){
     Route::post("/putcart", "BoardController@put_cart");
@@ -34,4 +38,8 @@ if(isset($_SESSION['user'])){
     Route::get("/logout", "MainController@logout");
     Route::get("/cart_list", "MainController@cart_list");
     Route::get("/like_delete", "BoardController@like_delete");
+    Route::get("/purchasego", "MainController@purchase_go");
+    Route::post("/receipt", "BoardController@receipt");
+    Route::get("/update", "MainController@update");
+    Route::post("/update", "BoardController@update");
 }

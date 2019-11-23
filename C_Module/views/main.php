@@ -25,87 +25,23 @@
         <div class="best div">
             <p class="title">Best Product</p>
             <ul class="category">
-                <li class="active">all</li>
-                <li>Sneakers</li>
-                <li>canvas</li>
-                <li>Slip-on</li>
+                <li class="active" data-idx="0">all</li>
+                <?php foreach($data['category'] as $item) : ?>
+                    <li data-idx="<?=$item->id?>"><?=$item->name?></li>
+                <?php endforeach;?>
             </ul>
-            <div class="best_box">
-                <div class="card_img">
-                    <div class="img_box">
-                        <img src="img/shoose.jpg" alt="img">
-                    </div>
-                    <div class="p_box">
-                        <div class="sub_p_box">
-                            <p>Nike</p>
-                            <p class="strong">\25000</p>
-                            <p class="small">Sales : 6000 / Like : 500</p>
-                        </div>
-                        <div class="button">
-                            <a href="" class="btn2">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card_img">
-                    <div class="img_box">
-                        <img src="img/shoose.jpg" alt="img">
-                    </div>
-                    <div class="p_box">
-                        <div class="sub_p_box">
-                            <p>Nike</p>
-                            <p class="strong">\25000</p>
-                            <p class="small">Sales : 6000 / Like : 500</p>
-                        </div>
-                        <div class="button">
-                            <a href="" class="btn2">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card_img">
-                    <div class="img_box">
-                        <img src="img/shoose.jpg" alt="img">
-                    </div>
-                    <div class="p_box">
-                        <div class="sub_p_box">
-                            <p>Nike</p>
-                            <p class="strong">\25000</p>
-                            <p class="small">Sales : 6000 / Like : 500</p>
-                        </div>
-                        <div class="button">
-                            <a href="" class="btn2">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card_img">
-                    <div class="img_box">
-                        <img src="img/shoose.jpg" alt="img">
-                    </div>
-                    <div class="p_box">
-                        <div class="sub_p_box">
-                            <p>Nike</p>
-                            <p class="strong">\25000</p>
-                            <p class="small">Sales : 6000 / Like : 500</p>
-                        </div>
-                        <div class="button">
-                            <a href="" class="btn2">Read more</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="best_box box">
             </div>
         </div>
         <div class="best_brand div">
             <p class="title">Brand Product</p>
             <ul class="category">
-                <li class="active">all</li>
-                <li>adidas</li>
-                <li>nike</li>
-                <li>newbalance</li>
-                <li>fila</li>
-                <li>puma</li>
-                <li>reebok</li>
-                <li>other</li>
+                <li class="active" data-idx="0">all</li>
+                <?php foreach($data['brand'] as $item):?>
+                    <li data-idx="<?=$item->id?>"><?=$item->name?></li>    
+                <?php endforeach;?>
             </ul>
-            <div class="brand_box">
+            <div class="brand_box box">
                 <div class="card_img">
                     <div class="img_box">
                         <img src="img/shoose6.jpg" alt="">
@@ -172,12 +108,12 @@
         <div class="new div">
             <p class="title">New Product</p>
             <ul class="category">
-                <li class="active">all</li>
-                <li>Sneakers</li>
-                <li>canvas</li>
-                <li>Slip-on</li>
+                <li class="active" data-idx="0">all</li>
+                <?php foreach($data['category'] as $item) : ?>
+                <li data-idx="<?=$item->id?>"><?=$item->name?></li>
+                <?php endforeach;?>
             </ul>
-            <div class="new_box">
+            <div class="new_box box">
                 <div class="card_img">
                     <div class="img_box">
                         <img src="img/shoose6.jpg" alt="">
@@ -239,13 +175,12 @@
         <div class="sale div">
             <p class="title">Sale Product</p>
             <ul class="category">
-                <li class="active">all</li>
-                <li>10% ~ 20%</li>
-                <li>20% ~ 30%</li>
-                <li>30% ~ 40%</li>
-                <li>40% ~ 50%</li>
+                <li class="active" data-idx="0">all</li>
+                <?php foreach($data['sale'] as $item) : ?>
+                    <li data-idx="<?=$item->id?>"><?=$item->persent?></li>
+                <?php endforeach;?>
             </ul>
-            <div class="sale_box">
+            <div class="sale_box box">
                 <div class="card_img">
                     <div class="img_box">
                         <img src="img/shoose10.jpg" alt="">
@@ -313,3 +248,4 @@
                 </div>
             </div>
         </div>
+        <script src="js/main.js"></script>

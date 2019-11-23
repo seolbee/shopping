@@ -28,6 +28,12 @@ INSERT INTO `shopping_product`(`name`, `current`, `category`, `brand`, `Release_
 INSERT INTO `shopping_product`(`name`, `current`, `category`, `brand`, `Release_date`, `sales`, `likes`, `photo`, `link`) VALUES ("휠라스플라인", 49000, 1, 3, now(), 350, 100, "img/shoose28.jpg", "https://www.fila.co.kr/product/view.asp?ProductNo=33433&utm_source=naver&utm_medium=sp&gclid=Cj0KCQiAn8nuBRCzARIsAJcdIfMAyxvKyOUu8wcBslOjaTlozqRpwvQW3_mGVii6j0T2MnaiTUEqvSMaAi3LEALw_wcB");
 INSERT INTO `shopping_product`(`name`, `current`, `category`, `brand`, `Release_date`, `sales`, `likes`, `photo`, `link`) VALUES ("클래식보더", 39000, 2, 3, now(), 5000, 3000, "img/shoose29.jpg", "https://www.fila.co.kr/product/view.asp?ProductNo=34270&utm_source=naver&utm_medium=sp&gclid=Cj0KCQiAn8nuBRCzARIsAJcdIfPivd-Nh-LRdDykLrVv1WwMfpDIAlyY24n1lj8y7IcbFLi--FZ2U8saAlOsEALw_wcB");
 
+INSERT INTO `shopping_product`(`name`, `current`, `category`, `brand`, `Release_date`, `sales`, `likes`, `photo`, `link`) VALUES ("Puma Smash v2", 59000, 2, 4, now(), 3000, 2500, "img/shoose30.jpg", "https://kr.puma.com/puma-smash-v2-vulc-cv-20.html?gclid=Cj0KCQiAq97uBRCwARIsADTziyZmKWGSWhi7-zrrYf7JH5L5tCWxhJC1ZhOHp7EQGxH__ZBtDFZHeEsaApzIEALw_wcB");
+INSERT INTO `shopping_product`(`name`, `current`, `category`, `brand`, `Release_date`, `sales`, `likes`, `photo`, `link`) VALUES ("PUMA BREAKER MESH", 54000, 2, 4, now(), 3000, 2500, "img/shoose31.jpg", "https://kr.puma.com/puma-breaker-mesh-20.html?gclid=Cj0KCQiAq97uBRCwARIsADTziyZBscXbicwl5s1oNtdh-SP-KXDj9p1_DAC3UtydkBfOmbIUNDl7MAoaAheJEALw_wcB");
+
+
+INSERT INTO `shopping_product`(`name`, `current`, `category`, `brand`, `Release_date`, `sales`, `likes`, `photo`, `link`) VALUES ("리복 클럽 C 85 빈티지", 72000, 2, 4, now(), 3000, 2500, "img/shoose32.jpg", "http://with.gsshop.com/prd/prd.gs?prdid=27974828&utm_source=google&utm_medium=paid_search&utm_campaign=shopping&gclid=Cj0KCQiAq97uBRCwARIsADTziyaYHp1sn93BHR67q6uAiRM6Xwd27ccXlJrAzoPflgwruCK7fCb2730aAim4EALw_wcB&media=LSF&airbridge_referrer=airbridge=true&event_uuid=112f97f9-2b10-46fa-886d-b5b26550555b&transaction_id=55648634-bb12-4912-b3f5-773cdfacfa7b&short_id=fdqoj&referrer_timestamp=1574494666094&airbridge_tid=55648634-bb12-4912-b3f5-773cdfacfa7b");
+
 INSERT INTO `shopping_sale`(`persent`) VALUES ("10% ~ 20%");
 INSERT INTO `shopping_sale`(`persent`) VALUES ("20% ~ 30%");
 INSERT INTO `shopping_sale`(`persent`) VALUES ("30% ~ 40%");

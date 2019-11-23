@@ -91,19 +91,19 @@ class BoardController
     }
 
     public function put_cart(){
-        if(!isset($_SESSION['user'])) DB::startAndGo("로그인 한 유저만 할 수 있습니다. 로그인 페이지로 이동합니다.", "/signIn");
         $id = $_POST['id'];
         $size = $_POST['size'];
         $count = $_POST['count'];
         $kind = $_POST['kind'];
-        $sql = "SELECT current FROM shopping_product WHERE id = ?";
+        $sql = "SELECT * FROM shopping_product WHERE idx = ?";
         $current= DB::fetch($sql, [$id]);
-        $delivery_cost = $current > 50000 ? 0 : 2000;
+        $val = $current->current - ($current->current * $current->sale_per / 100);
+        $delivery_cost = $val > 50000 ? 0 : 2000;
         if(empty($id) || empty($size) || empty($count)){
             DB::stopAndBack("비어 있는 입력란이 있습니다. 확인해 보세요");
         }
         if($kind == "cart"){
-            $sql = "SELECT * FROM shopping_list WHERE product_idx = ? AND user_idx = ?";
+            $sql = "SELECT * FROM shopping_list WHERE product_idx = ? AND user_idx = ? AND purchase = 0";
             $result = DB::fetch($sql, [$id, $_SESSION['user']->idx]);
             if($result) DB::stopAndBack("이미 있는 상품 입니다.");
             $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, size) VALUE (?, ?, ?, ?, ?, ?)";
@@ -114,7 +114,11 @@ class BoardController
                 exit;
             }
         } else if($kind == "purchase"){
-            $_SESSION['purchase'] = $_POST;
+            $purchase_number = $_POST['purchase_number'];
+            $sql = "INSERT INTO shopping_list (product_idx, user_idx, purchase, delivery_cost, count, size, purchase_number) VALUE (?, ?, ?, ?, ?, ?, ?)";
+            $cnt = DB::query($sql, [$id, $_SESSION['user']->idx, 0, $delivery_cost, $count, $size, $purchase_number]);
+            $sql = "SELECT * FROM shopping_list WHERE purchase_number = ?";
+            $_SESSION['purchase'] = DB::fetchAll($sql, [$purchase_number]);
             DB::startAndGo("결제창으로 이동합니다.", "/purchase");
         }else{
             DB::stopAndBack("잘못된 경로 입니다. 돌아가 주세요");
@@ -123,12 +127,65 @@ class BoardController
 
     public function like_delete(){
         $id = $_GET['id'];
-        $sql = "UPDATE shopping_likes SET likes = likes - 1 WHERE id = ?";
+        $sql = "UPDATE shopping_product SET likes = likes - 1 WHERE id = ?";
         $cnt = DB::query($sql, [$id]);
         $sql = "DELETE FROM shopping_likes WHERE id = ? AND user_idx = ?";
         $cnt = DB::query($sql, [$id, $_SESSION['user']->idx]);
         if($cnt > 0){
             DB::stopAndBack("좋아하기 취소 완료");
+        } else{
+            exit;
+        }
+    }
+
+    public function receipt(){
+        $email = $_POST['email'];
+        $bank = $_POST['bank'];
+        $sql = "UPDATE shopping_list SET purchase = 1, bank = ?, date = now() WHERE purchase_number = ?";
+        $cnt = DB::query($sql, [$bank, $_SESSION['purchase'][0]->purchase_number]);
+        if($cnt < 0){
+            exit;
+        }
+        if(!empty($email)){
+            $call = $_POST['phone_number'];
+        $company_number = $_POST['company_number'];
+            if(empty($call)){
+                $sql = "INSERT INTO shopping_receipt (purchase_number, company_number, user_idx) VALUE (?, ?, ?)";
+                $param = [$_SESSION['purchase'][0]->purchase_number,$company_number, $_SESSION['user']->idx];
+            } else{
+                $sql = "INSERT INTO shopping_receipt (purchase_number, phone_number, user_idx) VALUE(?, ?, ?)";
+                $param = [$_SESSION['purchase'][0]->purchase_number, $call, $_SESSION['user']->idx];
+            }
+    
+            $cnt = DB::query($sql, $param);
+            if($cnt < 0){
+                exit;
+            }
+        }
+        echo json_encode(['msg'=>"결제 완료"], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function update(){
+        $idx = $_SESSION['user']->idx;
+        $id = $_POST['id'];
+        $nicname = $_POST['nicname'];
+        $address = $_POST['address'];
+        $detailed_address = $_POST['detailed_address'];
+        $phone_number = $_POST['phone_number'];
+        $email = $_POST['email'];
+        if(empty($_POST['pw'])){
+            $sql = "UPDATE `shopping_user` SET `id`=?,`address`=?,`detailed_address`=?,`phone_number`=?,`email`=?,`nicname`=? WHERE idx= ?";
+            $param = [$id, $address, $detailed_address, $phone_number, $email, $nicname, $idx];
+        } else{
+            $sql = "UPDATE `shopping_user` SET `id`=?,`password`=PASSWORD(?),`address`=?,`detailed_address`=?,`phone_number`=?,`email`=?,`nicname`=? WHERE idx =?";
+            $param = [$id, $_POST['pw'], $address, $detailed_address, $phone_number, $email, $nicname, $idx];
+        }
+        $cnt = DB::query($sql, $param);
+        $sql2 = "SELECT * FROM shopping_user WHERE idx = ?";
+        $result = DB::fetch($sql2, [$idx]);
+        $_SESSION['user'] = $result;
+        if($cnt > 0){
+            DB::stopAndBack("변경 완료");
         } else{
             exit;
         }
